@@ -9,13 +9,13 @@
  */
 
 import { useRef, useEffect, useState } from 'react';
-import { Navbar } from '@/src/components/Navbar';
-import { Hero } from '@/src/components/Hero';
-import { About } from '@/src/components/About';
-import { Services } from '@/src/components/Services';
-import { Gallery } from '@/src/components/Gallery';
-import { Contact } from '@/src/components/Contact';
-import { AdminPanel } from '@/src/components/AdminPanel';
+import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { About } from './components/About';
+import { Services } from './components/Services';
+import { Gallery } from './components/Gallery';
+import { Contact } from './components/Contact';
+import { AdminPanel } from './components/AdminPanel';
 
 
 export default function App() {
