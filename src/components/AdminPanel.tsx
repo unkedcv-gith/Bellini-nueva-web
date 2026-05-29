@@ -96,12 +96,12 @@ export function AdminPanel({ isOpen, onClose, onCasesUpdated }: AdminPanelProps)
   });
 
   const uEmail = user?.email?.toLowerCase();
-  const mainAdmin = 'mesfede@gmail.com';
+  const mainAdmins = ['mesfede@gmail.com', 'unkedcv@gmail.com'];
   const scndAdmin = import.meta.env.VITE_ADMIN_EMAIL?.toLowerCase();
-  const isUserAdmin = (user && (uEmail === mainAdmin || (scndAdmin && uEmail === scndAdmin))) || isPasscodeAuthorized;
+  const isUserAdmin = (user && (mainAdmins.includes(uEmail || '') || (scndAdmin && uEmail === scndAdmin))) || isPasscodeAuthorized;
   const hasAppletConfig = appletConfig && appletConfig.projectId;
   const isCustomProject = hasAppletConfig || !!import.meta.env.VITE_FIREBASE_PROJECT_ID;
-  const isRealFirebaseAdmin = (user && (uEmail === mainAdmin || (scndAdmin && uEmail === scndAdmin))) || (isCustomProject && isUserAdmin);
+  const isRealFirebaseAdmin = (user && (mainAdmins.includes(uEmail || '') || (scndAdmin && uEmail === scndAdmin))) || (isCustomProject && isUserAdmin);
 
   const isAuthDomainMismatch = isCustomProject && !hasAppletConfig &&
     import.meta.env.VITE_FIREBASE_AUTH_DOMAIN && 
@@ -136,9 +136,9 @@ export function AdminPanel({ isOpen, onClose, onCasesUpdated }: AdminPanelProps)
       setUser(currentUser);
       setAuthChecking(false);
       const email = currentUser?.email?.toLowerCase();
-      const allowedAdmin = 'mesfede@gmail.com';
+      const allowedAdmins = ['mesfede@gmail.com', 'unkedcv@gmail.com'];
       const customAdmin = import.meta.env.VITE_ADMIN_EMAIL?.toLowerCase();
-      if (currentUser && (email === allowedAdmin || (customAdmin && email === customAdmin))) {
+      if (currentUser && (allowedAdmins.includes(email || '') || (customAdmin && email === customAdmin))) {
         fetchCases();
       } else if (sessionStorage.getItem('bellini_fallback_auth') === 'true') {
         fetchCases();

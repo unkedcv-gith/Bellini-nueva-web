@@ -22,7 +22,7 @@ export function Navbar({ activeSection = 'hero' }: NavbarProps) {
     setIsOpenMobile(false);
     const container = document.getElementById('main-scroll-container');
     if (container) {
-      const sections = ['hero', 'nosotros', 'casos', 'servicios', 'experiencia', 'contacto'];
+      const sections = ['hero', 'nosotros', 'casos', 'servicios', 'contacto'];
       const index = sections.indexOf(targetId);
       if (index !== -1) {
         window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: index } }));

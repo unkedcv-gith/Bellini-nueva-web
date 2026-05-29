@@ -10,8 +10,8 @@ const __dirname = path.dirname(__filename);
 
 // Synchronous public assets cloning at startup
 try {
-  const srcImagesDir = path.resolve(__dirname, 'src/assets/images');
-  const publicImagesDir = path.resolve(__dirname, 'public/assets/images');
+  const srcImagesDir = path.resolve(__dirname, 'assets/images');
+  const publicImagesDir = path.resolve(__dirname, '../public/assets/images');
 
   if (fs.existsSync(srcImagesDir)) {
     fs.mkdirSync(publicImagesDir, { recursive: true });

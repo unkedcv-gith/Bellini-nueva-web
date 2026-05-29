@@ -14,7 +14,6 @@ import { Hero } from '@/src/components/Hero';
 import { About } from '@/src/components/About';
 import { Services } from '@/src/components/Services';
 import { Gallery } from '@/src/components/Gallery';
-import { Experience } from '@/src/components/Experience';
 import { Contact } from '@/src/components/Contact';
 import { AdminPanel } from '@/src/components/AdminPanel';
 
@@ -79,7 +78,7 @@ export default function App() {
     }
   }, [activeSection]);
 
-  const sections = ['hero', 'nosotros', 'casos', 'servicios', 'experiencia', 'contacto'];
+  const sections = ['hero', 'nosotros', 'casos', 'servicios', 'contacto'];
 
   useEffect(() => {
     const handleNavScroll = (e: Event) => {
@@ -279,9 +278,6 @@ export default function App() {
         <div id="servicios" className="w-full min-w-full h-full flex-shrink-0 snap-start">
           <Services />
         </div>
-        <div id="experiencia" className="w-full min-w-full h-full flex-shrink-0 snap-start">
-          <Experience />
-        </div>
         <div id="contacto" className="w-full min-w-full h-full flex-shrink-0 snap-start">
           <Contact />
         </div>
@@ -298,7 +294,7 @@ export default function App() {
               style={{ width: `${scrollProgress}%` }}
             ></div>
           </div>
-          <span className="font-serif text-[10px] tracking-widest text-[#f4f3ef]/40 uppercase">06</span>
+          <span className="font-serif text-[10px] tracking-widest text-[#f4f3ef]/40 uppercase">05</span>
         </div>
 
         {/* Dynamic active section indicator name */}
@@ -307,7 +303,6 @@ export default function App() {
           {activeSection === 'nosotros' && 'Filosofía'}
           {activeSection === 'casos' && 'Casos Clínicos'}
           {activeSection === 'servicios' && 'Disciplinas'}
-          {activeSection === 'experiencia' && 'La Experiencia'}
           {activeSection === 'contacto' && 'Sesión'}
         </div>
       </div>

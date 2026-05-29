@@ -2,6 +2,30 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
+import fs from 'fs';
+
+// Synchronous public assets cloning at startup
+try {
+  const srcImagesDir = path.resolve(__dirname, 'src/assets/images');
+  const publicImagesDir = path.resolve(__dirname, 'public/assets/images');
+
+  if (fs.existsSync(srcImagesDir)) {
+    fs.mkdirSync(publicImagesDir, { recursive: true });
+    const files = fs.readdirSync(srcImagesDir);
+    let count = 0;
+    for (const file of files) {
+      const srcFile = path.join(srcImagesDir, file);
+      const destFile = path.join(publicImagesDir, file);
+      if (fs.lstatSync(srcFile).isFile()) {
+        fs.copyFileSync(srcFile, destFile);
+        count++;
+      }
+    }
+    console.log(`[Asset Setup] Successfully cloned ${count} static assets to public/assets/images`);
+  }
+} catch (err) {
+  console.error('[Asset Setup] Error copying runtime case images:', err);
+}
 
 export default defineConfig(() => {
   return {

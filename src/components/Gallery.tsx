@@ -3,11 +3,11 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import teethBefore from '../assets/images/bellini_teeth_before_1779371123423.png';
-import teethAfter from '../assets/images/bellini_teeth_after_1779371142222.png';
-import belliniFoto1 from '../assets/images/bellini_foto01.jpg';
-import belliniFoto2 from '../assets/images/bellini_foto02.jpg';
-import belliniFoto3 from '../assets/images/bellini_foto03.jpg';
+import teethBefore from '../assets/images/bellini_imagen (3).jpeg';
+import teethAfter from '../assets/images/bellini_imagen (4).jpeg';
+import belliniFoto1 from '../assets/images/bellini_imagen (5).jpeg';
+import belliniFoto2 from '../assets/images/bellini_imagen (6).jpeg';
+import belliniFoto3 from '../assets/images/bellini_imagen (7).jpeg';
 import { BeforeAfterSlider } from './BeforeAfterSlider';
 import { resolveClinicalImagePath } from '../lib/imageResolver';
 
@@ -141,30 +141,30 @@ export function Gallery() {
   return (
     <section 
       id="casos" 
-      className="w-screen h-screen shrink-0 snap-start relative px-4 md:px-12 lg:px-20 pt-24 md:pt-[110px] pb-6 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
+      className="w-screen h-screen shrink-0 snap-start relative px-4 md:px-12 lg:px-16 pt-20 md:pt-24 pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
     >
       <div className="max-w-7xl mx-auto w-full flex flex-col h-full justify-between z-10 min-h-0 select-text">
         
         {/* Concise Editorial Title */}
-        <div className="flex flex-col md:flex-row justify-between md:items-end gap-4 border-b border-[#222]/30 pb-4">
+        <div className="flex flex-col md:flex-row justify-between md:items-end gap-3 border-b border-[#222]/30 pb-2.5">
           <div className="flex-grow max-w-3xl">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-[#8e8e8e] mb-1.5 block font-light">
+            <span className="text-[9px] uppercase tracking-[0.3em] text-[#8e8e8e] mb-1 block font-light">
               Gabinete Clínico / Casos Reales
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl leading-tight text-[#ECE8E1] font-semibold">
+            <h2 className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-[32px] leading-tight text-[#ECE8E1] font-semibold">
               {activeCase.name}
             </h2>
           </div>
           
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 shrink-0">
-            <span className="text-[11px] text-[#8e8e8e] font-light max-w-xs hidden lg:block leading-relaxed text-left">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 shrink-0">
+            <span className="text-[10px] text-[#8e8e8e] font-light max-w-xs hidden lg:block leading-relaxed text-left">
               {activeCase.beforeImg 
                 ? 'Examine los registros reales deslizando el mouse de un lado a otro sobre la imagen central.'
                 : 'Examine el registro fotográfico real de alta fidelidad de la restauración finalizada.'}
             </span>
             <button 
               onClick={() => setShowFutureCasesModal(true)}
-              className="group text-[9.5px] uppercase tracking-[0.2em] border border-bellini-primary px-5 py-2.5 rounded-full hover:bg-bellini-primary hover:text-[#0a0a0a] hover:border-bellini-primary transition-all duration-300 font-semibold cursor-pointer whitespace-nowrap active:scale-95 pointer-events-auto flex items-center gap-1.5"
+              className="group text-[9px] uppercase tracking-[0.2em] border border-bellini-primary px-4 py-2 rounded-full hover:bg-bellini-primary hover:text-[#0a0a0a] hover:border-bellini-primary transition-all duration-300 font-semibold cursor-pointer whitespace-nowrap active:scale-95 pointer-events-auto flex items-center gap-1.5"
             >
               Ver más casos
               <motion.span 
@@ -183,10 +183,10 @@ export function Gallery() {
         </div>
 
         {/* Master Presentation Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch flex-grow overflow-hidden min-h-0 py-4 select-text">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-grow overflow-hidden min-h-0 py-2.5 select-text">
           
           {/* LEFT: Before/After Interactive Slider / Standalone Image */}
-          <div className="lg:col-span-7 flex flex-col justify-between h-full min-h-0 bg-[#111]/20 rounded-xl p-4 border border-[#222]/30">
+          <div className="lg:col-span-7 flex flex-col justify-between h-full min-h-0 bg-[#111]/20 rounded-xl p-3 border border-[#222]/30">
             <div className="flex-grow flex items-center justify-center relative rounded-lg overflow-hidden bg-[#060606] select-none">
               
               {activeCase.beforeImg ? (
@@ -196,8 +196,8 @@ export function Gallery() {
                      beforeImage={resolveClinicalImagePath(activeCase.beforeImg)} 
                      afterImage={resolveClinicalImagePath(activeCase.afterImg)} 
                    />
-                  <div className="absolute bottom-3 left-3 right-3 flex justify-between items-center pointer-events-none select-none">
-                    <span className="bg-[#0a0a0a]/90 text-[8.5px] uppercase tracking-[0.15em] text-bellini-primary py-1.5 px-3 rounded border border-white/5 shadow-md">
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5 flex justify-between items-center pointer-events-none select-none">
+                    <span className="bg-[#0a0a0a]/90 text-[8px] uppercase tracking-[0.12em] text-bellini-primary py-1 px-2.5 rounded border border-white/5 shadow-md">
                       ⇄ Deslice el mouse horizontalmente para revelar la transformación
                     </span>
                   </div>
@@ -210,8 +210,8 @@ export function Gallery() {
                     className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-700 pointer-events-auto"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute bottom-3 right-3 flex items-center pointer-events-none select-none">
-                    <span className="bg-[#0a0a0a]/90 text-[8.5px] uppercase tracking-[0.15em] text-bellini-primary py-1.5 px-3 rounded border border-white/5 shadow-md">
+                  <div className="absolute bottom-2.5 right-2.5 flex items-center pointer-events-none select-none">
+                    <span className="bg-[#0a0a0a]/90 text-[8px] uppercase tracking-[0.12em] text-bellini-primary py-1 px-2.5 rounded border border-white/5 shadow-md">
                       Registro de Resultado de Tratamiento
                     </span>
                   </div>
@@ -222,19 +222,19 @@ export function Gallery() {
 
             {/* Gallery of extra photos representing clinical process steps */}
             {activeCase.galleryImages && activeCase.galleryImages.length > 0 && (
-              <div className="mt-4 flex flex-col gap-2 pointer-events-auto">
-                <span className="text-[9px] uppercase tracking-widest text-[#666] font-semibold text-left pl-1">
+              <div className="mt-2.5 flex flex-col gap-1.5 pointer-events-auto">
+                <span className="text-[8.5px] uppercase tracking-widest text-[#666] font-semibold text-left pl-1">
                   Registro del Proceso de Laboratorio & Secuencia Clínica:
                 </span>
                 <div 
-                  className="grid gap-3 transition-all duration-500"
+                  className="grid gap-2 transition-all duration-500"
                   style={{ gridTemplateColumns: `repeat(${Math.min(activeCase.galleryImages.length, 3)}, minmax(0, 1fr))` }}
                 >
                   {activeCase.galleryImages.map((imgUrl: string, stepIdx: number) => (
                     <div 
                       key={stepIdx}
                       onClick={() => setActiveLightboxImg(resolveClinicalImagePath(imgUrl))}
-                      className="group relative aspect-[14/9] bg-[#0c0c0c] border border-[#222] rounded overflow-hidden cursor-zoom-in transition-all duration-300 hover:border-bellini-primary/45 pointer-events-auto"
+                      className="group relative aspect-[16/10] bg-[#0c0c0c] border border-[#222] rounded overflow-hidden cursor-zoom-in transition-all duration-300 hover:border-bellini-primary/45 pointer-events-auto"
                     >
                       <img 
                         src={resolveClinicalImagePath(imgUrl)} 
