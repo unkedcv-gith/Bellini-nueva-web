@@ -333,9 +333,9 @@ export function Gallery() {
                   e.stopPropagation();
                   const container = document.getElementById('main-scroll-container');
                   if (container) {
-                    window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: 5 } }));
+                    window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: 4 } }));
                     container.scrollTo({
-                      left: 5 * container.clientWidth,
+                      left: 4 * container.clientWidth,
                       behavior: 'smooth'
                     });
                   }
@@ -462,9 +462,9 @@ export function Gallery() {
                       setShowFutureCasesModal(false);
                       const container = document.getElementById('main-scroll-container');
                       if (container) {
-                        window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: 5 } }));
+                        window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: 4 } }));
                         container.scrollTo({
-                          left: 5 * container.clientWidth,
+                          left: 4 * container.clientWidth,
                           behavior: 'smooth'
                         });
                       }
