@@ -124,7 +124,7 @@ export function Gallery() {
     return (
       <section 
         id="casos" 
-        className="w-screen h-screen shrink-0 snap-start relative px-4 md:px-12 lg:px-20 pt-24 md:pt-[110px] pb-6 flex flex-col justify-center items-center bg-[#0a0a0a] text-bellini-primary overflow-hidden"
+        className="w-full h-full relative px-4 md:px-12 lg:px-20 pt-24 md:pt-[110px] pb-6 flex flex-col justify-center items-center bg-[#0a0a0a] text-bellini-primary overflow-hidden"
       >
          <span className="text-[10px] uppercase tracking-[0.3em] text-[#8e8e8e] mb-4 block font-light">
            Gabinete Clínico
@@ -141,7 +141,7 @@ export function Gallery() {
   return (
     <section 
       id="casos" 
-      className="w-screen h-screen shrink-0 snap-start relative px-4 md:px-12 lg:px-16 pt-20 md:pt-24 pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
+      className="w-full h-full relative px-4 md:px-12 lg:px-16 pt-20 md:pt-24 pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
     >
       <div className="max-w-7xl mx-auto w-full flex flex-col h-full justify-between z-10 min-h-0 select-text">
         

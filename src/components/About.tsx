@@ -4,14 +4,13 @@ import { Watermark } from './Watermark';
 
 export function About() {
   return (
-    <section className="w-screen h-screen shrink-0 snap-start relative px-6 md:px-16 lg:px-24 py-16 md:py-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden">
+    <section className="w-full h-full relative px-6 md:px-16 lg:px-24 py-16 md:py-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden">
       <Watermark text="EXCELENCIA" />
       
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="col-span-1 md:col-span-5 relative"
         >
@@ -27,8 +26,7 @@ export function About() {
 
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="col-span-1 md:col-span-7 flex flex-col justify-center pt-4 md:pt-0"
         >
@@ -51,7 +49,7 @@ export function About() {
           
           <div className="mt-8 md:mt-12">
             <a 
-              href="#contacto" 
+              href="#/" 
               onClick={(e) => {
                 e.preventDefault();
                 const container = document.getElementById('main-scroll-container');

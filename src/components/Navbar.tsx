@@ -10,11 +10,11 @@ export function Navbar({ activeSection = 'hero' }: NavbarProps) {
   const [isOpenMobile, setIsOpenMobile] = useState(false);
 
   const navLinks = [
-    { name: 'Inicio', href: '#hero', targetId: 'hero' },
-    { name: 'Nosotros', href: '#nosotros', targetId: 'nosotros' },
-    { name: 'Casos', href: '#casos', targetId: 'casos' },
-    { name: 'Servicios', href: '#servicios', targetId: 'servicios' },
-    { name: 'Contacto', href: '#contacto', targetId: 'contacto' },
+    { name: 'Inicio', href: '#/', targetId: 'hero' },
+    { name: 'Nosotros', href: '#/', targetId: 'nosotros' },
+    { name: 'Casos', href: '#/', targetId: 'casos' },
+    { name: 'Servicios', href: '#/', targetId: 'servicios' },
+    { name: 'Contacto', href: '#/', targetId: 'contacto' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {

@@ -21,7 +21,7 @@ export function Services() {
   ];
 
   return (
-    <section className="relative min-h-screen bg-[#0a0a0a] flex items-center justify-center py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section className="relative w-full h-full bg-[#0a0a0a] flex items-center justify-center py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Subtle grid background for structural web feel */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-[0.02]" 

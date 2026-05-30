@@ -46,7 +46,7 @@ export default function App() {
   useEffect(() => {
     const handleViewportLock = () => {
       if (window.scrollX !== 0 || window.scrollY !== 0) {
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' as any });
       }
     };
     window.addEventListener('scroll', handleViewportLock, { passive: true });
@@ -138,11 +138,11 @@ export default function App() {
 
       e.preventDefault();
 
-      // Find current index
-      const viewportWidth = container.clientWidth;
+      // Find current index with fallback guards for clientWidth
+      const viewportWidth = container.clientWidth || window.innerWidth || 1;
       const currentScrollLeft = container.scrollLeft;
       const rawIndex = Math.round(currentScrollLeft / viewportWidth);
-      const currentIndex = Math.max(0, Math.min(rawIndex, sections.length - 1));
+      const currentIndex = isNaN(rawIndex) ? 0 : Math.max(0, Math.min(rawIndex, sections.length - 1));
 
       // Scroll-driven Hero sub-slide management
       if (currentIndex === 0) {
@@ -219,11 +219,11 @@ export default function App() {
         setScrollProgress((container.scrollLeft / scrollWidth) * 100);
       }
 
-      const viewportWidth = container.clientWidth;
+      const viewportWidth = container.clientWidth || window.innerWidth || 1;
       const currentScrollLeft = container.scrollLeft;
 
       const rawIndex = Math.round(currentScrollLeft / viewportWidth);
-      const currentIndex = Math.max(0, Math.min(rawIndex, sections.length - 1));
+      const currentIndex = isNaN(rawIndex) ? 0 : Math.max(0, Math.min(rawIndex, sections.length - 1));
       if (sections[currentIndex]) {
         setActiveSection(sections[currentIndex]);
       }
@@ -266,19 +266,19 @@ export default function App() {
         className="flex flex-row flex-nowrap overflow-x-auto overflow-y-hidden h-full w-full snap-x snap-mandatory relative z-10 select-none scrollbar-none"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div id="hero" className="w-full min-w-full h-full flex-shrink-0 snap-start">
+        <div id="hero" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
           <Hero activeSubSlide={heroSubSlide} />
         </div>
-        <div id="nosotros" className="w-full min-w-full h-full flex-shrink-0 snap-start">
+        <div id="nosotros" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
           <About />
         </div>
-        <div id="casos" className="w-full min-w-full h-full flex-shrink-0 snap-start">
+        <div id="casos" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
           <Gallery />
         </div>
-        <div id="servicios" className="w-full min-w-full h-full flex-shrink-0 snap-start">
+        <div id="servicios" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
           <Services />
         </div>
-        <div id="contacto" className="w-full min-w-full h-full flex-shrink-0 snap-start">
+        <div id="contacto" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
           <Contact />
         </div>
       </div>

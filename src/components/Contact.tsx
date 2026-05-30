@@ -4,15 +4,15 @@ import { Lock } from 'lucide-react';
 
 export function Contact() {
   return (
-    <section className="w-screen h-screen shrink-0 snap-start relative px-6 md:px-16 lg:px-24 py-16 md:py-20 flex flex-col justify-center bg-[#0a0a0a] text-bellini-primary overflow-hidden">
+    <section className="w-full h-full relative px-6 md:px-16 lg:px-24 py-16 md:py-20 flex flex-col justify-center bg-[#0a0a0a] text-bellini-primary overflow-hidden">
       <div className="max-w-7xl mx-auto w-full flex flex-col justify-between h-full max-h-[80vh] md:max-h-[75vh]">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           <div>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
               className="font-serif text-3xl md:text-5xl lg:text-6xl mb-4 font-light leading-none"
             >
               Agenda <br className="hidden md:block"/>
@@ -21,9 +21,8 @@ export function Contact() {
             
             <motion.p 
               initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="text-[12px] text-[#8e8e8e] font-light max-w-sm mb-6 md:mb-10"
             >
               Nuestro concierge programará una cita inicial para realizar una valoración personalizada de su estética dental.
@@ -32,9 +31,8 @@ export function Contact() {
             <address className="not-italic text-[10px] md:text-[11px] uppercase tracking-widest text-[#8e8e8e] space-y-4 md:space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <p className="text-bellini-primary mb-1 font-medium">Ubicación</p>
                 <p>Av. Alvear 1890, Recoleta</p>
@@ -42,9 +40,8 @@ export function Contact() {
 
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
               >
                 <p className="text-[#f4f3ef] mb-1 font-medium">Línea Directa</p>
                 <p className="font-serif tracking-widest text-[11px] md:text-[12px]">+54 11 4000 0000</p>
@@ -54,8 +51,7 @@ export function Contact() {
 
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
             className="w-full flex justify-end"
           >
