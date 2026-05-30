@@ -39,6 +39,8 @@ export default function App() {
 
   const [heroSubSlide, _setHeroSubSlide] = useState(0);
   const heroSubSlideRef = useRef(0);
+  const [aboutSubSlide, _setAboutSubSlide] = useState(0);
+  const aboutSubSlideRef = useRef(0);
   const lastNavWasWheelUp = useRef(false);
 
   // Lock system scroll of the body/window to (0,0) at all times.
@@ -68,6 +70,19 @@ export default function App() {
     }
   };
 
+  const setAboutSubSlide = (val: number | ((prev: number) => number)) => {
+    if (typeof val === 'function') {
+      _setAboutSubSlide(prev => {
+        const next = val(prev);
+        aboutSubSlideRef.current = next;
+        return next;
+      });
+    } else {
+      _setAboutSubSlide(val);
+      aboutSubSlideRef.current = val;
+    }
+  };
+
   useEffect(() => {
     if (activeSection === 'hero') {
       if (!lastNavWasWheelUp.current) {
@@ -75,6 +90,11 @@ export default function App() {
       }
     } else {
       lastNavWasWheelUp.current = false;
+    }
+    
+    // Reset About slide to 0 when leaving the section to start fresh
+    if (activeSection !== 'nosotros') {
+      setAboutSubSlide(0);
     }
   }, [activeSection]);
 
@@ -170,8 +190,34 @@ export default function App() {
         }
       }
 
+      // Scroll-driven About (Nosotros) sub-slide management
+      if (currentIndex === 1) {
+        const currentAboutSlide = aboutSubSlideRef.current;
+        if (e.deltaY > 0) {
+          // Scrolling down
+          if (currentAboutSlide < 2) {
+            isTransitioning.current = true;
+            setAboutSubSlide(prev => prev + 1);
+            setTimeout(() => {
+              isTransitioning.current = false;
+            }, 1000);
+            return;
+          }
+        } else {
+          // Scrolling up
+          if (currentAboutSlide > 0) {
+            isTransitioning.current = true;
+            setAboutSubSlide(prev => prev - 1);
+            setTimeout(() => {
+              isTransitioning.current = false;
+            }, 1000);
+            return;
+          }
+        }
+      }
+
       // Intercept wheel up on Nosotros (index 1) to land on the 3rd sub-slide of Hero (index 2)
-      if (currentIndex === 1 && e.deltaY < 0) {
+      if (currentIndex === 1 && e.deltaY < 0 && aboutSubSlideRef.current === 0) {
         isTransitioning.current = true;
         lastNavWasWheelUp.current = true;
         setHeroSubSlide(2);
@@ -270,7 +316,7 @@ export default function App() {
           <Hero activeSubSlide={heroSubSlide} />
         </div>
         <div id="nosotros" className="w-screen h-full flex-shrink-0 snap-start">
-          <About />
+          <About activeSubSlide={aboutSubSlide} onSubSlideChange={setAboutSubSlide} />
         </div>
         <div id="casos" className="w-screen h-full flex-shrink-0 snap-start">
           <Gallery />

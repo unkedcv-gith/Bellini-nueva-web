@@ -11,10 +11,10 @@ export function Navbar({ activeSection = 'hero' }: NavbarProps) {
 
   const navLinks = [
     { name: 'Inicio', href: '#/', targetId: 'hero' },
-    { name: 'Nosotros', href: '#/', targetId: 'nosotros' },
+    { name: 'Estudio', href: '#/', targetId: 'nosotros' },
     { name: 'Casos', href: '#/', targetId: 'casos' },
-    { name: 'Servicios', href: '#/', targetId: 'servicios' },
-    { name: 'Contacto', href: '#/', targetId: 'contacto' },
+    { name: 'Clínica', href: '#/', targetId: 'servicios' },
+    { name: 'Consulta', href: '#/', targetId: 'contacto' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, targetId: string) => {
