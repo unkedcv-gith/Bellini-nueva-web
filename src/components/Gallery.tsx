@@ -141,7 +141,7 @@ export function Gallery() {
   return (
     <section 
       id="casos" 
-      className="w-full h-full relative px-4 md:px-12 lg:px-16 pt-20 md:pt-24 pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
+      className="w-full h-full relative px-4 md:px-12 lg:px-16 pt-28 md:pt-36 pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
     >
       <div className="max-w-7xl mx-auto w-full flex flex-col h-full justify-between z-10 min-h-0 select-text">
         

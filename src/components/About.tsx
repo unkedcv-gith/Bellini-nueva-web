@@ -4,7 +4,7 @@ import { Watermark } from './Watermark';
 
 export function About() {
   return (
-    <section className="w-full h-full relative px-6 md:px-16 lg:px-24 py-16 md:py-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden">
+    <section className="w-full h-full relative px-6 md:px-16 lg:px-24 pt-24 pb-16 md:pt-32 md:pb-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden">
       <Watermark text="EXCELENCIA" />
       
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center relative z-10">
