@@ -266,19 +266,19 @@ export default function App() {
         className="flex flex-row flex-nowrap overflow-x-auto overflow-y-hidden h-full w-full snap-x snap-mandatory relative z-10 select-none scrollbar-none"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div id="hero" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
+        <div id="hero" className="w-screen h-full flex-shrink-0 snap-start">
           <Hero activeSubSlide={heroSubSlide} />
         </div>
-        <div id="nosotros" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
+        <div id="nosotros" className="w-screen h-full flex-shrink-0 snap-start">
           <About />
         </div>
-        <div id="casos" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
+        <div id="casos" className="w-screen h-full flex-shrink-0 snap-start">
           <Gallery />
         </div>
-        <div id="servicios" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
+        <div id="servicios" className="w-screen h-full flex-shrink-0 snap-start">
           <Services />
         </div>
-        <div id="contacto" className="w-screen min-w-[100vw] h-full flex-shrink-0 snap-start">
+        <div id="contacto" className="w-screen h-full flex-shrink-0 snap-start">
           <Contact />
         </div>
       </div>
