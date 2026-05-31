@@ -1,21 +1,38 @@
-import img1 from '../assets/images/bellini_imagen (1)-1.jpeg';
-import img2 from '../assets/images/bellini_imagen (2)-1.jpeg';
-import img3 from '../assets/images/bellini_imagen (3).jpeg';
-import img4 from '../assets/images/bellini_imagen (4).jpeg';
-import img5 from '../assets/images/bellini_imagen (5).jpeg';
-import img6 from '../assets/images/bellini_imagen (6).jpeg';
-import img7 from '../assets/images/bellini_imagen (7).jpeg';
-import img8 from '../assets/images/bellini_imagen (8).jpeg';
-import img9 from '../assets/images/bellini_imagen (9).jpeg';
-import img10 from '../assets/images/bellini_imagen (10)-1.jpeg';
-import img11 from '../assets/images/bellini_imagen (11)-1.jpeg';
-import img12 from '../assets/images/bellini_imagen (12)-1.jpeg';
-import img13 from '../assets/images/bellini_imagen (13).jpeg';
-import img14 from '../assets/images/bellini_imagen (14)-1.jpeg';
-import img15 from '../assets/images/bellini_imagen (15)-1.jpeg';
+import img1 from '../assets/images/bellini_imagen_1_1.jpeg';
+import img2 from '../assets/images/bellini_imagen_2_1.jpeg';
+import img3 from '../assets/images/bellini_imagen_3.jpeg';
+import img4 from '../assets/images/bellini_imagen_4.jpeg';
+import img5 from '../assets/images/bellini_imagen_5.jpeg';
+import img6 from '../assets/images/bellini_imagen_6.jpeg';
+import img7 from '../assets/images/bellini_imagen_7.jpeg';
+import img8 from '../assets/images/bellini_imagen_8.jpeg';
+import img9 from '../assets/images/bellini_imagen_9.jpeg';
+import img10 from '../assets/images/bellini_imagen_10_1.jpeg';
+import img11 from '../assets/images/bellini_imagen_11_1.jpeg';
+import img12 from '../assets/images/bellini_imagen_12_1.jpeg';
+import img13 from '../assets/images/bellini_imagen_13.jpeg';
+import img14 from '../assets/images/bellini_imagen_14_1.jpeg';
+import img15 from '../assets/images/bellini_imagen_15_1.jpeg';
 
 const imageMap: Record<string, string> = {
-  // Direct mappings to the uploaded files
+  // Direct mappings to the clean, uploaded files
+  'bellini_imagen_1_1.jpeg': img1,
+  'bellini_imagen_2_1.jpeg': img2,
+  'bellini_imagen_3.jpeg': img3,
+  'bellini_imagen_4.jpeg': img4,
+  'bellini_imagen_5.jpeg': img5,
+  'bellini_imagen_6.jpeg': img6,
+  'bellini_imagen_7.jpeg': img7,
+  'bellini_imagen_8.jpeg': img8,
+  'bellini_imagen_9.jpeg': img9,
+  'bellini_imagen_10_1.jpeg': img10,
+  'bellini_imagen_11_1.jpeg': img11,
+  'bellini_imagen_12_1.jpeg': img12,
+  'bellini_imagen_13.jpeg': img13,
+  'bellini_imagen_14_1.jpeg': img14,
+  'bellini_imagen_15_1.jpeg': img15,
+
+  // Direct bracket mapping fallbacks for older DB records still containing spaces/parentheses
   'bellini_imagen (1)-1.jpeg': img1,
   'bellini_imagen (2)-1.jpeg': img2,
   'bellini_imagen (3).jpeg': img3,

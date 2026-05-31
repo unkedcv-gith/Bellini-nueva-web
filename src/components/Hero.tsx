@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import img10 from '../assets/images/bellini_imagen (10)-1.jpeg';
-import img11 from '../assets/images/bellini_imagen (11)-1.jpeg';
-import img12 from '../assets/images/bellini_imagen (12)-1.jpeg';
+import img10 from '../assets/images/bellini_imagen_10_1.jpeg';
+import img11 from '../assets/images/bellini_imagen_11_1.jpeg';
+import img12 from '../assets/images/bellini_imagen_12_1.jpeg';
 
 interface HeroProps {
   activeSubSlide?: number;

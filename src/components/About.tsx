@@ -1,12 +1,12 @@
 import { motion, AnimatePresence } from 'motion/react';
 
 // Direct, verified image imports
-import portrait from '../assets/images/bellini_imagen (2)-1.jpeg';
-import teethMacro from '../assets/images/bellini_imagen (3).jpeg';
-import clinicArt from '../assets/images/bellini_imagen (5).jpeg';
-import techDetail from '../assets/images/bellini_imagen (6).jpeg';
-import precisionShot from '../assets/images/bellini_imagen (10)-1.jpeg';
-import calmInterior from '../assets/images/bellini_imagen (11)-1.jpeg';
+import portrait from '../assets/images/bellini_imagen_2_1.jpeg';
+import teethMacro from '../assets/images/bellini_imagen_3.jpeg';
+import clinicArt from '../assets/images/bellini_imagen_5.jpeg';
+import techDetail from '../assets/images/bellini_imagen_6.jpeg';
+import precisionShot from '../assets/images/bellini_imagen_10_1.jpeg';
+import calmInterior from '../assets/images/bellini_imagen_11_1.jpeg';
 
 interface PhilosophyTab {
   id: string;

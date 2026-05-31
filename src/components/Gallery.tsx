@@ -3,11 +3,11 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import teethBefore from '../assets/images/bellini_imagen (3).jpeg';
-import teethAfter from '../assets/images/bellini_imagen (4).jpeg';
-import belliniFoto1 from '../assets/images/bellini_imagen (5).jpeg';
-import belliniFoto2 from '../assets/images/bellini_imagen (6).jpeg';
-import belliniFoto3 from '../assets/images/bellini_imagen (7).jpeg';
+import teethBefore from '../assets/images/bellini_imagen_3.jpeg';
+import teethAfter from '../assets/images/bellini_imagen_4.jpeg';
+import belliniFoto1 from '../assets/images/bellini_imagen_5.jpeg';
+import belliniFoto2 from '../assets/images/bellini_imagen_6.jpeg';
+import belliniFoto3 from '../assets/images/bellini_imagen_7.jpeg';
 import { BeforeAfterSlider } from './BeforeAfterSlider';
 import { resolveClinicalImagePath } from '../lib/imageResolver';
 

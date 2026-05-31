@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Watermark } from './Watermark';
 
 // Use actual images from the project
-import img1 from '../assets/images/bellini_imagen (1)-1.jpeg';
-import img2 from '../assets/images/bellini_imagen (14)-1.jpeg';
-import img3 from '../assets/images/bellini_imagen (15)-1.jpeg';
-import img4 from '../assets/images/bellini_imagen (13).jpeg';
-import img5 from '../assets/images/bellini_imagen (12)-1.jpeg';
+import img1 from '../assets/images/bellini_imagen_1_1.jpeg';
+import img2 from '../assets/images/bellini_imagen_14_1.jpeg';
+import img3 from '../assets/images/bellini_imagen_15_1.jpeg';
+import img4 from '../assets/images/bellini_imagen_13.jpeg';
+import img5 from '../assets/images/bellini_imagen_12_1.jpeg';
 
 export function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
