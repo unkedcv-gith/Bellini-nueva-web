@@ -1,9 +1,10 @@
+# Deploy to Hostinger Custom Hosting - Configuration for Bellini
 name: Deploy to Custom Hosting
 
 on:
   push:
     branches:
-      - main # Cambia esto a 'master' si tu rama principal se llama así
+      - main # Trigger deployment on main branch commits
 
 jobs:
   build-and-deploy:
