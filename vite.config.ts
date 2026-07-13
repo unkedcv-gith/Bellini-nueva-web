@@ -27,8 +27,9 @@ try {
   console.error('[Asset Setup] Error copying runtime case images:', err);
 }
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
   return {
+    base: mode === 'production' ? '/bellini/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

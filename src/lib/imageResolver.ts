@@ -125,9 +125,11 @@ export function resolveClinicalImagePath(pathStr: string | null | undefined): st
     return imageMap[normalized];
   }
   
-  // 2. Default to serving it from our public copied folder (/assets/images/)
+  // 2. Default to serving it from our public copied folder (respecting Vite base path)
   if (filename) {
-    return `/assets/images/${filename}`;
+    const base = import.meta.env.BASE_URL || '/';
+    const cleanBase = base.endsWith('/') ? base : `${base}/`;
+    return `${cleanBase}assets/images/${filename}`;
   }
   
   return normalized;
