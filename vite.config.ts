@@ -29,7 +29,7 @@ try {
 
 export default defineConfig(({ mode }) => {
   return {
-    base: mode === 'production' ? '/bellini/' : '/',
+    base: mode === 'production' ? './' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
