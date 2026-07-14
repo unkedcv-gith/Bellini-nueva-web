@@ -69,24 +69,24 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
   const layouts = [
     {
       // ARQUITECTURA: Vertical portrait main structure with wide horizontal macro detail bottom-right
-      mainWrapClass: "relative w-full max-w-[280px] md:max-w-[320px] aspect-[10/14] md:aspect-[3/4] rounded-2xl mt-12 md:mt-16 lg:mt-20",
-      overlayClass: "absolute -bottom-6 -right-4 md:-right-8 w-40 md:w-48 aspect-[16/10] rounded-xl shadow-[0_25px_50px_-10px_rgba(0,0,0,0.95)] z-20",
+      mainWrapClass: "relative w-full max-w-[200px] xs:max-w-[240px] md:max-w-[320px] aspect-[10/14] md:aspect-[3/4] rounded-2xl mt-4 md:mt-16 lg:mt-20",
+      overlayClass: "absolute -bottom-4 -right-2 md:-right-8 w-28 xs:w-36 md:w-48 aspect-[16/10] rounded-xl shadow-[0_25px_50px_-10px_rgba(0,0,0,0.95)] z-20",
       gridTickTop: "+ GEOMETRÍA // 1.618",
       gridTickBottom: "SCALE // OPTICAL CORRECTION",
       frameOffset: "-inset-6",
     },
     {
       // PRECISION: Landscape horizontal widescreen main with deep vertical tall micro-zoom overlapping top-left
-      mainWrapClass: "relative w-full max-w-[330px] md:max-w-[380px] aspect-[16/10] rounded-xl mt-12 md:mt-16 lg:mt-20",
-      overlayClass: "absolute -top-8 -left-6 md:-left-10 w-32 md:w-38 aspect-[3/5] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.9)] z-20",
+      mainWrapClass: "relative w-full max-w-[240px] xs:max-w-[280px] md:max-w-[380px] aspect-[16/10] rounded-xl mt-4 md:mt-16 lg:mt-20",
+      overlayClass: "absolute -top-6 -left-4 md:-left-10 w-24 xs:w-32 md:w-38 aspect-[3/5] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.9)] z-20",
       gridTickTop: "MICROMETRIC // RESOLUTION",
       gridTickBottom: "TOL. // 0.01um 3D SCAN",
       frameOffset: "-inset-4 md:-inset-8",
     },
     {
       // CALMA: Harmonious elegant square layout with compact square offset on the bottom-right corner representing pure negative space
-      mainWrapClass: "relative w-full max-w-[280px] md:max-w-[320px] aspect-[1/1] rounded-3xl mt-12 md:mt-16 lg:mt-20",
-      overlayClass: "absolute -bottom-4 -right-2 md:-right-6 w-32 md:w-36 aspect-[1/1] rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.95)] z-20",
+      mainWrapClass: "relative w-full max-w-[200px] xs:max-w-[240px] md:max-w-[320px] aspect-[1/1] rounded-3xl mt-4 md:mt-16 lg:mt-20",
+      overlayClass: "absolute -bottom-3 -right-1 md:-right-6 w-24 xs:w-32 md:w-36 aspect-[1/1] rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.95)] z-20",
       gridTickTop: "DECIBEL // -12dB AMBIENT",
       gridTickBottom: "TEXTURA // LINO & MONOCROMO",
       frameOffset: "-inset-8",
@@ -96,7 +96,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
   const currentLayout = layouts[currentIndex];
 
   return (
-    <section className="w-full h-full relative px-6 md:px-12 lg:px-24 pt-48 pb-16 md:pt-[24vh] md:pb-24 lg:pt-[26vh] lg:pb-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden selection:bg-bellini-primary/20">
+    <section className="w-full h-full relative px-6 md:px-12 lg:px-24 pt-24 sm:pt-36 md:pt-[24vh] pb-12 md:pb-24 lg:pt-[26vh] lg:pb-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden selection:bg-bellini-primary/20">
       
       {/* 1. GARGANTUAN INTERACTIVE BACKGROUND OUTLINE TYPOGRAPHY - TRANSITIONING LIVE */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0 flex items-center justify-center">
@@ -128,10 +128,10 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
       </div>
 
       {/* Main asymmetric grid layout */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-24 items-center relative z-10 overflow-y-auto lg:overflow-visible max-h-[82vh] lg:max-h-none py-2 custom-scrollbar pr-1">
         
         {/* Left Column: highly-styled framing compositions that shift structurally */}
-        <div className="col-span-1 lg:col-span-6 flex items-center justify-center relative min-h-[400px] md:min-h-[520px]">
+        <div className="col-span-1 lg:col-span-6 flex items-center justify-center relative min-h-[280px] xs:min-h-[340px] md:min-h-[520px]">
           
           {/* Main frame wrapper with slow floating motion */}
           <motion.div 
@@ -216,12 +216,12 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
             — FILOSOFÍA DE AUTOR
           </div>
 
-          <h2 className="font-serif text-3xl md:text-5xl text-[#f4f3ef] leading-[1.1] mb-10 tracking-tight">
+          <h2 className="font-serif text-3xl md:text-5xl text-[#f4f3ef] leading-[1.1] mb-6 md:mb-10 tracking-tight">
             El valor supremo de la <span className="font-light italic text-bellini-primary">sutileza</span>.
           </h2>
 
           {/* LUXURY DESKTOP SEGMENTED FILETER CONTROLS */}
-          <div className="flex flex-col md:flex-row border-b border-white/5 mb-10 relative">
+          <div className="flex flex-row border-b border-white/5 mb-6 md:mb-10 relative overflow-x-auto scrollbar-none gap-4 md:gap-0 justify-between md:justify-start">
             {tabs.map((tab, idx) => {
               const isSelected = currentIndex === idx;
               return (
@@ -229,7 +229,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
                   key={tab.id}
                   id={`philosophy-tab-btn-${tab.id}`}
                   onClick={() => onSubSlideChange(idx)}
-                  className="relative flex items-center justify-between md:justify-start gap-4 py-4 md:py-5 md:pr-10 text-left transition-colors font-mono select-none cursor-pointer outline-none group"
+                  className="relative flex items-center gap-2 md:gap-4 py-3 md:py-5 md:pr-10 text-left transition-colors font-mono select-none cursor-pointer outline-none group shrink-0"
                 >
                   <span className={`text-[10px] md:text-[11px] transition-colors ${
                     isSelected ? 'text-bellini-primary font-bold' : 'text-[#f4f3ef]/30 group-hover:text-[#f4f3ef]/60'
@@ -251,20 +251,13 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
                       transition={{ type: "spring", stiffness: 350, damping: 28 }}
                     />
                   )}
-                  
-                  {/* Subtle chevron/arrow on mobile */}
-                  <span className={`text-[9.5px] text-[#f4f3ef]/50 transition-transform md:hidden ${
-                    isSelected ? 'rotate-90 text-bellini-primary font-bold' : 'rotate-0'
-                  }`}>
-                    →
-                  </span>
                 </button>
               );
             })}
           </div>
 
           {/* Philosophic Description Canvas layout */}
-          <div className="min-h-[220px] flex flex-col justify-between">
+          <div className="min-h-[140px] md:min-h-[220px] flex flex-col justify-between">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.id}
@@ -295,7 +288,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
             </AnimatePresence>
 
             {/* Footer with fine signatures & direction trigger links */}
-            <div className="mt-12 pt-5 border-t border-white/5 flex items-center justify-between">
+            <div className="mt-6 md:mt-12 pt-5 border-t border-white/5 flex items-center justify-between">
               <div className="text-[9px] font-mono text-[#f4f3ef]/30 tracking-widest uppercase select-none">
                 ESTUDIO BELLINI // ARTISANAL GEOMETRY DEPT
               </div>

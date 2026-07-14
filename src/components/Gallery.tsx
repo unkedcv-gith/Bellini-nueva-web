@@ -141,12 +141,12 @@ export function Gallery() {
   return (
     <section 
       id="casos" 
-      className="w-full h-full relative px-4 md:px-12 lg:px-16 pt-28 md:pt-36 pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
+      className="w-full h-full relative px-4 md:px-12 lg:px-16 pt-20 sm:pt-28 md:pt-36 pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
     >
-      <div className="max-w-7xl mx-auto w-full flex flex-col h-full justify-between z-10 min-h-0 select-text">
+      <div className="max-w-7xl mx-auto w-full flex flex-col h-full justify-between z-10 min-h-0 select-text overflow-y-auto lg:overflow-visible custom-scrollbar py-2">
         
         {/* Concise Editorial Title */}
-        <div className="flex flex-col md:flex-row justify-between md:items-end gap-3 border-b border-[#222]/30 pb-2.5">
+        <div className="flex flex-col md:flex-row justify-between md:items-end gap-3 border-b border-[#222]/30 pb-2.5 shrink-0">
           <div className="flex-grow max-w-3xl">
             <span className="text-[9px] uppercase tracking-[0.3em] text-[#8e8e8e] mb-1 block font-light">
               Gabinete Clínico / Casos Reales
@@ -183,11 +183,11 @@ export function Gallery() {
         </div>
 
         {/* Master Presentation Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-grow overflow-hidden min-h-0 py-2.5 select-text">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-grow overflow-visible lg:overflow-hidden min-h-0 py-2.5 select-text">
           
           {/* LEFT: Before/After Interactive Slider / Standalone Image */}
-          <div className="lg:col-span-7 flex flex-col justify-between h-full min-h-0 bg-[#111]/20 rounded-xl p-3 border border-[#222]/30">
-            <div className="flex-grow flex items-center justify-center relative rounded-lg overflow-hidden bg-[#060606] select-none">
+          <div className="lg:col-span-7 flex flex-col justify-between h-auto lg:h-full min-h-0 bg-[#111]/20 rounded-xl p-3 border border-[#222]/30 gap-3">
+            <div className="w-full aspect-[16/10] lg:aspect-auto lg:flex-grow flex items-center justify-center relative rounded-lg overflow-hidden bg-[#060606] select-none">
               
               {activeCase.beforeImg ? (
                 <>
@@ -222,7 +222,7 @@ export function Gallery() {
 
             {/* Gallery of extra photos representing clinical process steps */}
             {activeCase.galleryImages && activeCase.galleryImages.length > 0 && (
-              <div className="mt-2.5 flex flex-col gap-1.5 pointer-events-auto">
+              <div className="mt-2.5 flex flex-col gap-1.5 pointer-events-auto shrink-0">
                 <span className="text-[8.5px] uppercase tracking-widest text-[#666] font-semibold text-left pl-1">
                   Registro del Proceso de Laboratorio & Secuencia Clínica:
                 </span>
@@ -254,10 +254,10 @@ export function Gallery() {
           </div>
 
           {/* RIGHT: Sophisticated Case Technical File ("Ficha Técnica") */}
-          <div className="lg:col-span-5 flex flex-col bg-[#111]/40 border border-[#222]/50 hover:border-bellini-primary/25 rounded-xl transition-all duration-500 text-left h-full min-h-0 overflow-hidden select-text pointer-events-auto">
+          <div className="lg:col-span-5 flex flex-col bg-[#111]/40 border border-[#222]/50 hover:border-bellini-primary/25 rounded-xl transition-all duration-500 text-left h-auto lg:h-full min-h-0 overflow-visible lg:overflow-hidden select-text pointer-events-auto">
             
             {/* Scrollable informational details inside the card */}
-            <div className="flex-grow overflow-y-auto p-6 space-y-5 custom-scrollbar scrollbar-thin scrollbar-thumb-neutral-800 scrollbar-track-transparent">
+            <div className="flex-grow overflow-visible lg:overflow-y-auto p-6 space-y-5 custom-scrollbar scrollbar-thin scrollbar-thumb-neutral-800 scrollbar-track-transparent">
               
               <div>
                 <span className="inline-block text-[10px] uppercase tracking-[0.2em] text-bellini-primary bg-bellini-primary/10 px-2.5 py-1 rounded font-semibold mb-2">

@@ -22,7 +22,15 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
     handleMove(e.clientX);
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    if (e.touches.length > 0) {
+      handleMove(e.touches[0].clientX);
+    }
+  };
+
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    e.stopPropagation();
     if (e.touches.length > 0) {
       handleMove(e.touches[0].clientX);
     }
@@ -31,8 +39,9 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-full min-h-[320px] md:min-h-[440px] lg:min-h-[480px] overflow-hidden select-none cursor-ew-resize rounded-lg border border-white/5 bg-[#080808]"
+      className="relative w-full aspect-[16/10] md:aspect-auto h-auto md:h-full min-h-[200px] sm:min-h-[280px] md:min-h-[440px] lg:min-h-[480px] overflow-hidden select-none cursor-ew-resize rounded-lg border border-white/5 bg-[#080808]"
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
       {/* AFTER picture in background */}

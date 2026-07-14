@@ -89,7 +89,7 @@ export function Hero({ activeSubSlide = 0 }: HeroProps) {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-16 lg:px-24 flex flex-col justify-end pb-32 md:pb-36 pointer-events-none">
+      <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-6 md:px-16 lg:px-24 flex flex-col justify-end pb-44 md:pb-36 pointer-events-none">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between w-full gap-8 border-l border-bellini-primary/20 pl-6 md:pl-8">
           
           <AnimatePresence mode="wait" custom={direction}>
@@ -107,7 +107,7 @@ export function Hero({ activeSubSlide = 0 }: HeroProps) {
                 {slideData[currentSlide]?.subtitle}
               </span>
 
-              <h1 className="font-serif text-sm sm:text-lg md:text-2xl lg:text-3xl tracking-[0.05em] text-bellini-primary/90 leading-none font-light whitespace-nowrap select-none drop-shadow-lg">
+              <h1 className="font-serif text-[13px] xs:text-sm sm:text-lg md:text-2xl lg:text-3xl tracking-[0.05em] text-bellini-primary/90 leading-[1.3] md:leading-none font-light sm:whitespace-nowrap select-none drop-shadow-lg max-w-[280px] xs:max-w-[340px] sm:max-w-none">
                 {slideData[currentSlide]?.title}
               </h1>
             </motion.div>
@@ -126,7 +126,7 @@ export function Hero({ activeSubSlide = 0 }: HeroProps) {
       </div>
 
       {/* Sutil microindicador de scroll hacia la derecha */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none opacity-80 select-none drop-shadow-md">
+      <div className="absolute bottom-[84px] md:bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none opacity-80 select-none drop-shadow-md">
         <span className="text-[7.5px] uppercase tracking-[0.3em] text-[#A3A6AC] mb-2 font-light">
           Scroll para recorrer
         </span>
