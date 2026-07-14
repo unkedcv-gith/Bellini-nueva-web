@@ -7,6 +7,7 @@ interface BeforeAfterSliderProps {
 
 export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (clientX: number) => {
@@ -17,32 +18,40 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
     setSliderPosition(percentage);
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Only drag on mouse movement when hovering or dragging
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setIsDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
     handleMove(e.clientX);
   };
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    if (e.touches.length > 0) {
-      handleMove(e.touches[0].clientX);
+    if (e.pointerType === 'mouse') {
+      handleMove(e.clientX);
+    } else if (isDragging) {
+      handleMove(e.clientX);
     }
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    if (e.touches.length > 0) {
-      handleMove(e.touches[0].clientX);
+    setIsDragging(false);
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch (err) {
+      // Safe guard for cases where pointer capture is already released
     }
   };
 
   return (
     <div 
       ref={containerRef}
-      className="relative w-full aspect-[16/10] md:aspect-auto h-auto md:h-full min-h-[200px] sm:min-h-[280px] md:min-h-[440px] lg:min-h-[480px] overflow-hidden select-none cursor-ew-resize rounded-lg border border-white/5 bg-[#080808]"
-      onMouseMove={handleMouseMove}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
+      className="relative w-full aspect-[16/10] md:aspect-auto h-auto md:h-full min-h-[200px] sm:min-h-[280px] md:min-h-[440px] lg:min-h-[480px] overflow-hidden select-none cursor-ew-resize rounded-lg border border-white/5 bg-[#080808] touch-none"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
     >
       {/* AFTER picture in background */}
       <img 

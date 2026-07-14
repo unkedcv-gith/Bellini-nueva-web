@@ -6,6 +6,7 @@ import img12 from '../assets/images/bellini_imagen_12_1.jpeg';
 
 interface HeroProps {
   activeSubSlide?: number;
+  onSubSlideChange?: (idx: number) => void;
 }
 
 const slideData = [
@@ -26,7 +27,7 @@ const slideData = [
   }
 ];
 
-export function Hero({ activeSubSlide = 0 }: HeroProps) {
+export function Hero({ activeSubSlide = 0, onSubSlideChange }: HeroProps) {
   const currentSlide = activeSubSlide;
   const direction = 1; // Constant direction so all slides consistently flow from right to left
 
@@ -110,6 +111,29 @@ export function Hero({ activeSubSlide = 0 }: HeroProps) {
               <h1 className="font-serif text-[13px] xs:text-sm sm:text-lg md:text-2xl lg:text-3xl tracking-[0.05em] text-bellini-primary/90 leading-[1.3] md:leading-none font-light sm:whitespace-nowrap select-none drop-shadow-lg max-w-[280px] xs:max-w-[340px] sm:max-w-none">
                 {slideData[currentSlide]?.title}
               </h1>
+
+              {/* Tappable / Clickable Pagination indicators */}
+              {onSubSlideChange && (
+                <div className="flex items-center gap-3 mt-4 pointer-events-auto select-none">
+                  {slideData.map((_, idx) => (
+                    <button
+                      key={idx}
+                      id={`hero-dot-${idx}`}
+                      onClick={() => onSubSlideChange(idx)}
+                      className="group flex items-center py-2 focus:outline-none cursor-pointer"
+                      title={`Ir a imagen ${idx + 1}`}
+                    >
+                      <div 
+                        className="h-[2px] transition-all duration-500 ease-out" 
+                        style={{ 
+                          width: currentSlide === idx ? '24px' : '10px',
+                          backgroundColor: currentSlide === idx ? 'var(--color-bellini-bone)' : 'rgba(163, 166, 172, 0.25)'
+                        }} 
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
 
