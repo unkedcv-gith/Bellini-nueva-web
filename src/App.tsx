@@ -98,6 +98,29 @@ export default function App() {
     }
   }, [activeSection]);
 
+  // Autoplay Hero and Nosotros sub-slides when resting on those sections
+  useEffect(() => {
+    let interval: any = null;
+    
+    if (activeSection === 'hero') {
+      interval = setInterval(() => {
+        if (!isTransitioning.current) {
+          setHeroSubSlide(prev => (prev + 1) % 3);
+        }
+      }, 6000);
+    } else if (activeSection === 'nosotros') {
+      interval = setInterval(() => {
+        if (!isTransitioning.current) {
+          setAboutSubSlide(prev => (prev + 1) % 3);
+        }
+      }, 7000);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [activeSection]);
+
   const sections = ['hero', 'nosotros', 'casos', 'servicios', 'contacto'];
 
   useEffect(() => {
@@ -275,130 +298,14 @@ export default function App() {
       }
     };
 
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let hasSwiped = false;
-
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      hasSwiped = false;
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      const targetElement = e.target as HTMLElement;
-      if (targetElement) {
-        const scrollContainer = targetElement.closest('.overflow-y-auto, .custom-scrollbar') as HTMLElement;
-        if (scrollContainer && scrollContainer.scrollHeight > scrollContainer.clientHeight) {
-          return;
-        }
-      }
-
-      if (
-        document.body.classList.contains('modal-open') || 
-        document.querySelector('.modal-overlay') || 
-        document.querySelector('[role="dialog"]')
-      ) {
-        return;
-      }
-
-      if (hasSwiped || isTransitioning.current) {
-        if (isTransitioning.current) {
-          const viewportWidth = container.clientWidth || window.innerWidth || 1;
-          const currentScrollLeft = container.scrollLeft;
-          const rawIndex = Math.round(currentScrollLeft / viewportWidth);
-          const currentIndex = isNaN(rawIndex) ? 0 : Math.max(0, Math.min(rawIndex, sections.length - 1));
-          if (currentIndex === 0 || currentIndex === 1) {
-            e.preventDefault();
-          }
-        }
-        return;
-      }
-
-      const diffX = touchStartX - e.touches[0].clientX;
-      const diffY = touchStartY - e.touches[0].clientY;
-
-      if (Math.abs(diffX) > Math.abs(diffY)) {
-        const viewportWidth = container.clientWidth || window.innerWidth || 1;
-        const currentScrollLeft = container.scrollLeft;
-        const rawIndex = Math.round(currentScrollLeft / viewportWidth);
-        const currentIndex = isNaN(rawIndex) ? 0 : Math.max(0, Math.min(rawIndex, sections.length - 1));
-
-        if (currentIndex === 0) {
-          const currentHeroSlide = heroSubSlideRef.current;
-          if (diffX > 40) {
-            if (currentHeroSlide < 2) {
-              e.preventDefault();
-              isTransitioning.current = true;
-              hasSwiped = true;
-              setHeroSubSlide(prev => prev + 1);
-              setTimeout(() => {
-                isTransitioning.current = false;
-              }, 1100);
-            }
-          } else if (diffX < -40) {
-            if (currentHeroSlide > 0) {
-              e.preventDefault();
-              isTransitioning.current = true;
-              hasSwiped = true;
-              setHeroSubSlide(prev => prev - 1);
-              setTimeout(() => {
-                isTransitioning.current = false;
-              }, 1100);
-            }
-          }
-        } else if (currentIndex === 1) {
-          const currentAboutSlide = aboutSubSlideRef.current;
-          if (diffX > 40) {
-            if (currentAboutSlide < 2) {
-              e.preventDefault();
-              isTransitioning.current = true;
-              hasSwiped = true;
-              setAboutSubSlide(prev => prev + 1);
-              setTimeout(() => {
-                isTransitioning.current = false;
-              }, 1000);
-            }
-          } else if (diffX < -40) {
-            if (currentAboutSlide > 0) {
-              e.preventDefault();
-              isTransitioning.current = true;
-              hasSwiped = true;
-              setAboutSubSlide(prev => prev - 1);
-              setTimeout(() => {
-                isTransitioning.current = false;
-              }, 1000);
-            } else if (currentAboutSlide === 0) {
-              e.preventDefault();
-              isTransitioning.current = true;
-              hasSwiped = true;
-              lastNavWasWheelUp.current = true;
-              setHeroSubSlide(2);
-              container.scrollTo({
-                left: 0,
-                behavior: 'smooth'
-              });
-              setTimeout(() => {
-                isTransitioning.current = false;
-              }, 1100);
-            }
-          }
-        }
-      }
-    };
-
     container.addEventListener('wheel', handleWheel, { passive: false });
     container.addEventListener('scroll', handleScroll, { passive: true });
-    container.addEventListener('touchstart', handleTouchStart, { passive: true });
-    container.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     handleScroll();
 
     return () => {
       container.removeEventListener('wheel', handleWheel);
       container.removeEventListener('scroll', handleScroll);
-      container.removeEventListener('touchstart', handleTouchStart);
-      container.removeEventListener('touchmove', handleTouchMove);
     };
   }, []);
 
