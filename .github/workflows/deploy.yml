@@ -41,8 +41,12 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          # Tu usuario FTP de Hostinger ya inicia sesión dentro de la carpeta 'public_html/'.
-          # Por lo tanto, la ruta correcta para la carpeta de destino es simplemente 'belliniweb/'.
-          # Si creaste un secreto FTP_SERVER_DIR en GitHub, usará ese valor; de lo contrario usará 'belliniweb/'.
-          server-dir: ${{ secrets.FTP_SERVER_DIR || 'belliniweb/' }}
+          # Como tu usuario FTP principal inicia sesión en la raíz absoluta '/',
+          # la ruta correcta para llegar a tu sitio web dentro de Hostinger es:
+          # domains/unke.com.ar/public_html/belliniweb/
+          #
+          # Si en tu hosting la carpeta se llama 'belliweb' en lugar de 'belliniweb',
+          # puedes crear el secreto 'FTP_SERVER_DIR' en GitHub con el valor:
+          # domains/unke.com.ar/public_html/belliweb/
+          server-dir: ${{ secrets.FTP_SERVER_DIR || 'domains/unke.com.ar/public_html/belliniweb/' }}
           dangerous-clean-slate: false # Cambia a true si quieres borrar archivos antiguos en el servidor que ya no estén en la build
