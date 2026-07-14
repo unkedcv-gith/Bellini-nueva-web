@@ -41,8 +41,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          # Si creaste un secreto FTP_SERVER_DIR en GitHub, usará ese valor.
-          # Si no lo creaste, usará por defecto 'public_html/belliniweb/'.
-          # TIP: Si tu usuario FTP ya inicia sesión directo en la carpeta de destino, pon './' en tu secreto de GitHub.
-          server-dir: ${{ secrets.FTP_SERVER_DIR || 'public_html/belliniweb/' }}
+          # Tu usuario FTP de Hostinger ya inicia sesión dentro de la carpeta 'public_html/'.
+          # Por lo tanto, la ruta correcta para la carpeta de destino es simplemente 'belliniweb/'.
+          # Si creaste un secreto FTP_SERVER_DIR en GitHub, usará ese valor; de lo contrario usará 'belliniweb/'.
+          server-dir: ${{ secrets.FTP_SERVER_DIR || 'belliniweb/' }}
           dangerous-clean-slate: false # Cambia a true si quieres borrar archivos antiguos en el servidor que ya no estén en la build
