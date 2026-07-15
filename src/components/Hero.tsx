@@ -108,7 +108,7 @@ export function Hero({ activeSubSlide = 0, onSubSlideChange }: HeroProps) {
                 {slideData[currentSlide]?.subtitle}
               </span>
 
-              <h1 className="font-serif text-[13px] xs:text-sm sm:text-lg md:text-2xl lg:text-3xl tracking-[0.05em] text-bellini-primary/90 leading-[1.3] md:leading-none font-light sm:whitespace-nowrap select-none drop-shadow-lg max-w-[280px] xs:max-w-[340px] sm:max-w-none">
+              <h1 className="font-serif text-[15px] xs:text-[17px] sm:text-xl md:text-3xl lg:text-4xl tracking-[0.05em] text-bellini-primary/90 leading-[1.3] md:leading-none font-light sm:whitespace-nowrap select-none drop-shadow-lg max-w-[280px] xs:max-w-[340px] sm:max-w-none">
                 {slideData[currentSlide]?.title}
               </h1>
 
@@ -137,15 +137,7 @@ export function Hero({ activeSubSlide = 0, onSubSlideChange }: HeroProps) {
             </motion.div>
           </AnimatePresence>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.8 }}
-            transition={{ duration: 1.5, delay: 1.2 }}
-            className="hidden md:flex flex-col text-[8px] uppercase tracking-[0.3em] text-[#A3A6AC] text-right font-light items-end pl-12 drop-shadow-sm"
-          >
-            <span className="font-semibold text-bellini-primary/90 mb-1">Bellini Studio</span>
-            <span className="text-[#A3A6AC]">Espacios de Salud & Arquitectura</span>
-          </motion.div>
+          {/* Right signature removed as requested */}
         </div>
       </div>
 

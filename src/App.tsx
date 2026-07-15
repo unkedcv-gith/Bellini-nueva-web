@@ -365,15 +365,6 @@ export default function App() {
           </div>
           <span className="font-serif text-[10px] tracking-widest text-[#f4f3ef]/40 uppercase">05</span>
         </div>
-
-        {/* Dynamic active section indicator name */}
-        <div className="text-[9px] uppercase tracking-[0.3em] text-[#f4f3ef]/60 font-medium">
-          {activeSection === 'hero' && 'Inicio'}
-          {activeSection === 'nosotros' && 'Filosofía'}
-          {activeSection === 'casos' && 'Casos Clínicos'}
-          {activeSection === 'servicios' && 'Disciplinas'}
-          {activeSection === 'contacto' && 'Sesión'}
-        </div>
       </div>
 
       {/* Behind the scenes clinical database editing console */}

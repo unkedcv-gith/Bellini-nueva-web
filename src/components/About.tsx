@@ -28,9 +28,9 @@ interface AboutProps {
 export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
   const tabs: PhilosophyTab[] = [
     {
-      id: 'arquitectura',
+      id: 'estetica',
       num: '01',
-      title: 'Arquitectura',
+      title: 'Estética',
       subtitle: '01 / EQUILIBRIO FACIAL',
       miniTitle: 'DISEÑO & PROPORCIÓN ÁUREA',
       description: 'Partimos de los cánones de la proporción áurea para proyectar sonrisas que se integran armoniosamente en la expresión del rostro. Diseñamos con un concepto de geometría facial fluida, donde la estética sigue a la naturaleza.',
@@ -65,35 +65,8 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
   const currentIndex = Math.max(0, Math.min(activeSubSlide, tabs.length - 1));
   const current = tabs[currentIndex];
 
-  // Editorial custom layouts per slide index to break the standard grid monotony:
-  const layouts = [
-    {
-      // ARQUITECTURA: Vertical portrait main structure with wide horizontal macro detail bottom-right
-      mainWrapClass: "relative w-full max-w-[200px] xs:max-w-[240px] md:max-w-[320px] aspect-[10/14] md:aspect-[3/4] rounded-2xl mt-4 md:mt-16 lg:mt-20",
-      overlayClass: "absolute -bottom-4 -right-2 md:-right-8 w-28 xs:w-36 md:w-48 aspect-[16/10] rounded-xl shadow-[0_25px_50px_-10px_rgba(0,0,0,0.95)] z-20",
-      gridTickTop: "+ GEOMETRÍA // 1.618",
-      gridTickBottom: "SCALE // OPTICAL CORRECTION",
-      frameOffset: "-inset-6",
-    },
-    {
-      // PRECISION: Landscape horizontal widescreen main with deep vertical tall micro-zoom overlapping top-left
-      mainWrapClass: "relative w-full max-w-[240px] xs:max-w-[280px] md:max-w-[380px] aspect-[16/10] rounded-xl mt-4 md:mt-16 lg:mt-20",
-      overlayClass: "absolute -top-6 -left-4 md:-left-10 w-24 xs:w-32 md:w-38 aspect-[3/5] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.9)] z-20",
-      gridTickTop: "MICROMETRIC // RESOLUTION",
-      gridTickBottom: "TOL. // 0.01um 3D SCAN",
-      frameOffset: "-inset-4 md:-inset-8",
-    },
-    {
-      // CALMA: Harmonious elegant square layout with compact square offset on the bottom-right corner representing pure negative space
-      mainWrapClass: "relative w-full max-w-[200px] xs:max-w-[240px] md:max-w-[320px] aspect-[1/1] rounded-3xl mt-4 md:mt-16 lg:mt-20",
-      overlayClass: "absolute -bottom-3 -right-1 md:-right-6 w-24 xs:w-32 md:w-36 aspect-[1/1] rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.95)] z-20",
-      gridTickTop: "DECIBEL // -12dB AMBIENT",
-      gridTickBottom: "TEXTURA // LINO & MONOCROMO",
-      frameOffset: "-inset-8",
-    }
-  ];
-
-  const currentLayout = layouts[currentIndex];
+  const mainWrapClass = "relative w-full max-w-[460px] aspect-[4/5] sm:aspect-[3/4] md:aspect-[4/5] rounded-2xl mt-4 lg:mt-12";
+  const frameOffset = "-inset-6";
 
   return (
     <section className="w-full h-full relative px-6 md:px-12 lg:px-24 pt-24 sm:pt-36 md:pt-[24vh] pb-12 md:pb-24 lg:pt-[26vh] lg:pb-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden selection:bg-bellini-primary/20">
@@ -137,20 +110,15 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
           <motion.div 
             key={current.id + '-layout-frame'}
             layout="position"
-            className={currentLayout.mainWrapClass}
+            className={mainWrapClass}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Fine architectural outer filete/frame */}
             <motion.div 
-              className={`absolute ${currentLayout.frameOffset} border border-bellini-primary/15 rounded-3xl pointer-events-none z-0`}
+              className={`absolute ${frameOffset} border border-bellini-primary/15 rounded-3xl pointer-events-none z-0`}
               animate={{ opacity: [0.35, 0.65, 0.35] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
-
-            {/* Micro coordinate grid indicators */}
-            <div className="absolute -top-12 -left-6 text-[8px] font-mono text-bellini-primary/50 tracking-widest hidden md:block uppercase select-none">
-              {currentLayout.gridTickTop}
-            </div>
             
             {/* Main Image Container */}
             <div className="w-full h-full rounded-2xl overflow-hidden border border-white/5 relative bg-black/40 z-10 group shadow-[0_30px_70px_-15px_rgba(0,0,0,0.9)]">
@@ -167,44 +135,6 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
                 />
               </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-transparent to-[#0a0a0a]/30"></div>
-              
-              {/* Dynamic stamp metadata inside photoborder */}
-              <div className="absolute bottom-6 left-6 flex items-baseline gap-2 text-[10px] font-mono tracking-widest text-[#f4f3ef]/40 select-none">
-                <span className="text-bellini-primary font-bold">{current.num}</span>
-                <span className="uppercase">{current.id}</span>
-              </div>
-            </div>
-
-            {/* Overlapping secondary Detail Image Frame (Asymmetric shifting overlap layout) */}
-            <motion.div 
-              layout="position"
-              className={`${currentLayout.overlayClass} overflow-hidden border border-white/10 bg-black group/overlay`}
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 0.5 }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={current.id + '-overlay-img'}
-                  src={current.overlayImg}
-                  alt={current.title + ' detail'}
-                  initial={{ opacity: 0, scale: 1.15 }}
-                  animate={{ opacity: 0.82, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.94 }}
-                  transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full h-full object-cover select-none pointer-events-none transition-[filter,opacity,transform] duration-[1000ms] ease-out filter grayscale brightness-[0.85] group-hover/overlay:grayscale-0 group-hover/overlay:brightness-[1.15] group-hover/overlay:opacity-100 group-hover/overlay:scale-[1.04]"
-                />
-              </AnimatePresence>
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a]/80 to-transparent"></div>
-              
-              {/* Subtle structural visual guide lines inside overlapping image */}
-              <div className="absolute bottom-3 right-4 text-[7px] font-mono text-bellini-primary/60 tracking-widest select-none">
-                [ DETAIL // {current.num} ]
-              </div>
-            </motion.div>
-
-            {/* Bottom auxiliary coordinate tick */}
-            <div className="absolute top-full pt-8 right-2 text-[8px] font-mono text-bellini-primary/40 tracking-widest hidden md:block uppercase select-none">
-              {currentLayout.gridTickBottom}
             </div>
           </motion.div>
         </div>
@@ -213,7 +143,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
         <div className="col-span-1 lg:col-span-6 flex flex-col justify-center">
           
           <div className="mb-4 text-[9px] uppercase tracking-[0.40em] text-bellini-primary lg:text-bellini-primary/95 font-medium font-mono select-none">
-            — FILOSOFÍA DE AUTOR
+            — FILOSOFÍA ODONTOLÓGICA
           </div>
 
           <h2 className="font-serif text-3xl md:text-5xl text-[#f4f3ef] leading-[1.1] mb-6 md:mb-10 tracking-tight">
@@ -288,11 +218,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
             </AnimatePresence>
 
             {/* Footer with fine signatures & direction trigger links */}
-            <div className="mt-6 md:mt-12 pt-5 border-t border-white/5 flex items-center justify-between">
-              <div className="text-[9px] font-mono text-[#f4f3ef]/30 tracking-widest uppercase select-none">
-                ESTUDIO BELLINI // ARTISANAL GEOMETRY DEPT
-              </div>
-
+            <div className="mt-6 md:mt-12 pt-5 border-t border-white/5 flex items-center justify-end">
               <a 
                 href="#contacto" 
                 onClick={(e) => {

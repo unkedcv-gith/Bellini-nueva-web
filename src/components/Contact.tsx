@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Lock } from 'lucide-react';
+import { Lock, MapPin, Phone } from 'lucide-react';
 
 
 export function Contact() {
@@ -23,28 +23,40 @@ export function Contact() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-[12px] text-[#8e8e8e] font-light max-w-sm mb-6 md:mb-10"
+              className="text-[14px] text-[#cfcfcf] font-normal leading-relaxed max-w-sm mb-8 md:mb-12"
             >
               Nuestro concierge programará una cita inicial para realizar una valoración personalizada de su estética dental.
             </motion.p>
 
-            <address className="not-italic text-[10px] md:text-[11px] uppercase tracking-widest text-[#8e8e8e] space-y-4 md:space-y-6">
+            <address className="not-italic text-[11px] md:text-[12px] uppercase tracking-widest space-y-6 md:space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex items-start gap-3.5"
               >
-                <p className="text-bellini-primary mb-1 font-medium">Ubicación</p>
-                <p>Av. Alvear 1890, Recoleta</p>
+                <div className="mt-1 text-bellini-primary flex-shrink-0">
+                  <MapPin size={16} strokeWidth={1.5} />
+                </div>
+                <div>
+                  <p className="text-bellini-primary mb-1.5 font-bold tracking-[0.2em] text-[12px] md:text-[13px]">Ubicación</p>
+                  <p className="text-[#f4f3ef] font-medium normal-case tracking-normal">Av. Alvear 1890, Recoleta</p>
+                </div>
               </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex items-start gap-3.5"
               >
-                <p className="text-[#f4f3ef] mb-1 font-medium">Línea Directa</p>
-                <p className="font-serif tracking-widest text-[11px] md:text-[12px]">+54 11 4000 0000</p>
+                <div className="mt-1 text-bellini-primary flex-shrink-0">
+                  <Phone size={16} strokeWidth={1.5} />
+                </div>
+                <div>
+                  <p className="text-bellini-primary mb-1.5 font-bold tracking-[0.2em] text-[12px] md:text-[13px]">Línea Directa</p>
+                  <p className="font-sans tracking-wider text-[13px] md:text-[14px] text-[#f4f3ef] font-medium">+54 11 4000 0000</p>
+                </div>
               </motion.div>
             </address>
           </div>

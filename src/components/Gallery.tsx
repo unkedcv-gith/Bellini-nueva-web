@@ -324,10 +324,7 @@ export function Gallery() {
             </div>
 
             {/* Direct Booking Action - Pinned stably at the bottom of the card */}
-            <div className="p-5 border-t border-[#222]/60 bg-[#111]/80 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
-              <span className="text-[10px] uppercase tracking-[0.25em] text-[#8e8e8e]">
-                Bellini Dental Studio
-              </span>
+            <div className="p-5 border-t border-[#222]/60 bg-[#111]/80 backdrop-blur-md flex items-center justify-center shrink-0">
               <button 
                 onClick={(e) => {
                   e.stopPropagation();
@@ -340,7 +337,7 @@ export function Gallery() {
                     });
                   }
                 }}
-                className="w-full sm:w-auto text-[10px] uppercase tracking-[0.2em] bg-bellini-primary text-[#0a0a0a] px-6 py-3 rounded hover:bg-[#fff] hover:text-[#0a0a0a] transition-all duration-300 font-semibold cursor-pointer border-none shadow-md active:scale-95 whitespace-nowrap"
+                className="w-full text-center text-[10px] uppercase tracking-[0.2em] bg-bellini-primary text-[#0a0a0a] px-6 py-3 rounded hover:bg-[#fff] hover:text-[#0a0a0a] transition-all duration-300 font-semibold cursor-pointer border-none shadow-md active:scale-95 whitespace-nowrap"
               >
                 Solicitar valoración del Caso →
               </button>
@@ -349,11 +346,7 @@ export function Gallery() {
 
         </div>
 
-        {/* Footer info strip */}
-        <div className="flex justify-between items-center text-[8px] uppercase tracking-[0.25em] text-[#4c4f54] pt-3 border-t border-[#222]/45">
-          <span>Estudio de Mimetismo & Diseño Oral</span>
-          <span>Imágenes reales de tratamiento clínico</span>
-        </div>
+        {/* Footer info strip removed as requested */}
       </div>
 
       {/* MODAL 1: PREVIEW ARCHIVE OF FUTURE CLINICAL CASES (VIA PORTAL) */}
