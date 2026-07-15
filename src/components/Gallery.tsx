@@ -196,11 +196,6 @@ export function Gallery() {
                      beforeImage={resolveClinicalImagePath(activeCase.beforeImg)} 
                      afterImage={resolveClinicalImagePath(activeCase.afterImg)} 
                    />
-                  <div className="absolute bottom-2.5 left-2.5 right-2.5 flex justify-between items-center pointer-events-none select-none">
-                    <span className="bg-[#0a0a0a]/90 text-[8px] uppercase tracking-[0.12em] text-bellini-primary py-1 px-2.5 rounded border border-white/5 shadow-md">
-                      ⇄ Deslice el mouse horizontalmente para revelar la transformación
-                    </span>
-                  </div>
                 </>
               ) : (
                 <div className="w-full h-full flex items-center justify-center relative bg-[#060606] group cursor-default">

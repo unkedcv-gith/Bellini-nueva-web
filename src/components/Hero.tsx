@@ -108,7 +108,7 @@ export function Hero({ activeSubSlide = 0, onSubSlideChange }: HeroProps) {
                 {slideData[currentSlide]?.subtitle}
               </span>
 
-              <h1 className="font-serif text-[15px] xs:text-[17px] sm:text-xl md:text-3xl lg:text-4xl tracking-[0.05em] text-bellini-primary/90 leading-[1.3] md:leading-none font-light sm:whitespace-nowrap select-none drop-shadow-lg max-w-[280px] xs:max-w-[340px] sm:max-w-none">
+              <h1 className="font-serif text-[18px] xs:text-[21px] sm:text-[25px] md:text-[38px] lg:text-[46px] tracking-[0.05em] text-bellini-primary/90 leading-[1.3] md:leading-none font-light sm:whitespace-nowrap select-none drop-shadow-lg max-w-[280px] xs:max-w-[340px] sm:max-w-none">
                 {slideData[currentSlide]?.title}
               </h1>
 

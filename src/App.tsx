@@ -41,6 +41,8 @@ export default function App() {
   const heroSubSlideRef = useRef(0);
   const [aboutSubSlide, _setAboutSubSlide] = useState(0);
   const aboutSubSlideRef = useRef(0);
+  const [servicesSubSlide, _setServicesSubSlide] = useState(0);
+  const servicesSubSlideRef = useRef(0);
   const lastNavWasWheelUp = useRef(false);
 
   // Lock system scroll of the body/window to (0,0) at all times.
@@ -83,6 +85,19 @@ export default function App() {
     }
   };
 
+  const setServicesSubSlide = (val: number | ((prev: number) => number)) => {
+    if (typeof val === 'function') {
+      _setServicesSubSlide(prev => {
+        const next = val(prev);
+        servicesSubSlideRef.current = next;
+        return next;
+      });
+    } else {
+      _setServicesSubSlide(val);
+      servicesSubSlideRef.current = val;
+    }
+  };
+
   useEffect(() => {
     if (activeSection === 'hero') {
       if (!lastNavWasWheelUp.current) {
@@ -95,6 +110,11 @@ export default function App() {
     // Reset About slide to 0 when leaving the section to start fresh
     if (activeSection !== 'nosotros') {
       setAboutSubSlide(0);
+    }
+
+    // Reset Services slide to 0 when leaving the section to start fresh
+    if (activeSection !== 'servicios') {
+      setServicesSubSlide(0);
     }
   }, [activeSection]);
 
@@ -254,6 +274,32 @@ export default function App() {
         return;
       }
 
+      // Scroll-driven Services (Disciplinas) sub-slide management
+      if (currentIndex === 3) {
+        const currentServicesSlide = servicesSubSlideRef.current;
+        if (e.deltaY > 0) {
+          // Scrolling down
+          if (currentServicesSlide < 4) {
+            isTransitioning.current = true;
+            setServicesSubSlide(prev => prev + 1);
+            setTimeout(() => {
+              isTransitioning.current = false;
+            }, 1000);
+            return;
+          }
+        } else {
+          // Scrolling up
+          if (currentServicesSlide > 0) {
+            isTransitioning.current = true;
+            setServicesSubSlide(prev => prev - 1);
+            setTimeout(() => {
+              isTransitioning.current = false;
+            }, 1000);
+            return;
+          }
+        }
+      }
+
       let targetIndex = currentIndex;
       if (e.deltaY > 0) {
         // Scroll down / scroll right
@@ -345,7 +391,7 @@ export default function App() {
           <Gallery />
         </div>
         <div id="servicios" className="w-screen h-full flex-shrink-0 snap-start">
-          <Services />
+          <Services activeSubSlide={servicesSubSlide} onSubSlideChange={setServicesSubSlide} />
         </div>
         <div id="contacto" className="w-screen h-full flex-shrink-0 snap-start">
           <Contact />

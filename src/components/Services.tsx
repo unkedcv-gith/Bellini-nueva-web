@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Watermark } from './Watermark';
 
@@ -9,8 +8,13 @@ import img3 from '../assets/images/bellini_imagen_15_1.jpeg';
 import img4 from '../assets/images/bellini_imagen_13.jpeg';
 import img5 from '../assets/images/bellini_imagen_12_1.jpeg';
 
-export function Services() {
-  const [activeIndex, setActiveIndex] = useState(0);
+interface ServicesProps {
+  activeSubSlide: number;
+  onSubSlideChange: (val: number) => void;
+}
+
+export function Services({ activeSubSlide, onSubSlideChange }: ServicesProps) {
+  const activeIndex = activeSubSlide;
 
   const services = [
     { title: 'Estética', subtitle: 'Dental', desc: 'Carillas cerámicas de espesor mínimo, blanqueamiento de alta precisión y escultura de composites.', img: img1 },
@@ -42,59 +46,72 @@ export function Services() {
         <div className="absolute -bottom-[1px] -left-[1px] w-3 h-3 border-b border-l border-bellini-primary" />
         <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b border-r border-bellini-primary" />
         
-        {/* Left Panel: Context & Active Image */}
-        <div className="w-full md:w-[40%] p-8 md:p-12 lg:p-16 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 relative">
-          {/* Internal micro-guides */}
-          <div className="hidden md:block absolute top-12 -right-[1px] w-[2px] h-8 bg-bellini-primary/50 z-20" />
+        {/* Left Panel: Entirely dedicated to the modern, elegant, and contemporary visual gallery */}
+        <div className="w-full md:w-[45%] min-h-[420px] md:min-h-[580px] border-b md:border-b-0 md:border-r border-white/5 relative bg-[#0b0b0b] overflow-hidden flex items-center justify-center">
+          {/* Subtle glowing ambient behind image */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.03)_0%,transparent_70%)] pointer-events-none" />
           
-          <div>
-            <span className="flex items-center gap-4 text-[8px] lg:text-[9px] uppercase tracking-[0.4em] text-bellini-primary mb-8">
-              <span className="w-6 h-[1px] bg-bellini-primary/40" />
-              02 / Disciplinas
-            </span>
-            <p className="text-[11px] lg:text-[12px] font-light text-[#A3A6AC] leading-relaxed max-w-[280px] mb-12">
-              Prácticas especializadas enfocadas en la restitución biológica y estética, guiadas por precisión micrométrica y tecnología de vanguardia.
-            </p>
-          </div>
-
-          {/* Meticulous Image Frame */}
-          <div className="relative w-full aspect-[4/5] max-w-[260px] p-2 border border-white/10 bg-white/[0.01] overflow-hidden group">
+          {/* Continuous slow pan image viewport with clean editorial spacing */}
+          <div className="absolute inset-4 md:inset-6 overflow-hidden rounded-lg group">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 1.05, filter: 'blur(4px)' }}
-                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, scale: 0.95, filter: 'blur(4px)' }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, scale: 1.1, filter: 'brightness(0.6) contrast(1.05)' }}
+                animate={{ 
+                  opacity: 0.85, 
+                  scale: 1.02, 
+                  filter: 'brightness(0.95) contrast(1)',
+                }}
+                exit={{ opacity: 0, scale: 0.97, filter: 'brightness(0.5) contrast(0.95)' }}
+                transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                 src={services[activeIndex].img}
-                className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                className="w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-104 group-hover:opacity-100 group-hover:filter group-hover:brightness-100"
               />
             </AnimatePresence>
+
+            {/* Contemporary artistic layout lines & frames */}
+            <div className="absolute inset-0 border border-white/10 pointer-events-none z-10 rounded-lg" />
             
-            {/* Crop marks on image */}
-            <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/30" />
-            <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/30" />
-            
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end mix-blend-difference pointer-events-none">
-              <span className="text-[7px] font-mono tracking-widest text-white/50">
-                FIG. 0{activeIndex + 1}
+            {/* Elegant corner bracket design indicators */}
+            <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-white/20 pointer-events-none z-20" />
+            <div className="absolute top-3 right-3 w-4 h-4 border-t border-r border-white/20 pointer-events-none z-20" />
+            <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-white/20 pointer-events-none z-20" />
+            <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/20 pointer-events-none z-20" />
+
+            {/* Modern vertical text strip decoration */}
+            <div className="absolute top-6 left-6 flex items-center gap-2 z-20 mix-blend-difference">
+              <span className="text-[7px] font-mono tracking-[0.4em] text-white/40 uppercase">
+                CLINICAL PRACTICE //
               </span>
-              <div className="flex gap-1 flex-col items-end">
-                 <span className="text-[6px] uppercase tracking-[0.3em] text-white/30">Sector</span>
-                 <span className="text-[8px] uppercase tracking-[0.2em] text-white/70">{services[activeIndex].subtitle}</span>
+              <span className="text-[7px] font-mono tracking-[0.2em] text-bellini-primary uppercase">
+                {services[activeIndex].title}
+              </span>
+            </div>
+
+            {/* Bottom minimal HUD bar */}
+            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-20 mix-blend-difference">
+              <div className="flex flex-col">
+                <span className="text-[6px] uppercase tracking-[0.3em] text-white/30 mb-0.5 font-mono">REGISTRO DIGITAL</span>
+                <span className="text-[10px] uppercase tracking-[0.15em] text-white/95 font-light font-sans">FIG. 0{activeIndex + 1}</span>
+              </div>
+              <div className="flex flex-col items-end">
+                <span className="text-[6px] uppercase tracking-[0.3em] text-white/30 mb-0.5 font-mono">DISCIPLINA</span>
+                <span className="text-[10px] uppercase tracking-[0.15em] text-bellini-primary font-medium font-sans">
+                  {services[activeIndex].title} {services[activeIndex].subtitle}
+                </span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Panel: The Ledger List */}
-        <div className="w-full md:w-[60%] flex flex-col pt-8 md:pt-0 justify-center">
+        <div className="w-full md:w-[55%] flex flex-col pt-8 md:pt-0 justify-center">
            {services.map((service, index) => {
              const isActive = activeIndex === index;
              return (
                <motion.div
                  key={service.title}
-                 onMouseEnter={() => setActiveIndex(index)}
+                 onMouseEnter={() => onSubSlideChange(index)}
                  className="group relative flex flex-col py-6 lg:py-8 px-8 md:px-12 lg:px-16 border-b border-white/5 last:border-b-0 cursor-pointer overflow-hidden transition-colors duration-500 hover:bg-white/[0.02]"
                >
                  {/* Fine vertical line on active */}

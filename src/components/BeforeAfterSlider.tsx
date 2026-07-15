@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -8,6 +9,7 @@ interface BeforeAfterSliderProps {
 export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (clientX: number) => {
@@ -16,6 +18,9 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
     const x = clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setSliderPosition(percentage);
+    if (!hasInteracted) {
+      setHasInteracted(true);
+    }
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -86,6 +91,33 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
           Antes
         </div>
       </div>
+
+      {/* High-visibility animated instructions banner that disappears on interaction */}
+      <AnimatePresence>
+        {!hasInteracted && (
+          <motion.div 
+            initial={{ opacity: 0, y: 12, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-x-4 bottom-6 flex justify-center z-30 pointer-events-none select-none"
+          >
+            <motion.div 
+              animate={{ 
+                boxShadow: [
+                  "0 4px 20px 0px rgba(212,175,55,0.15)",
+                  "0 4px 20px 4px rgba(212,175,55,0.3)",
+                  "0 4px 20px 0px rgba(212,175,55,0.15)"
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-[#0c0c0c]/95 backdrop-blur-md text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-bellini-primary py-2.5 px-6 rounded-full border border-bellini-primary/40 shadow-2xl flex items-center gap-3 text-center"
+            >
+              <span className="text-[12px] animate-pulse">⇄</span> Deslizar para ver el antes y después
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Interactive central dividing bar */}
       <div 
