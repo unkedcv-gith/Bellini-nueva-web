@@ -43,7 +43,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
       num: '02',
       title: 'Precisión',
       subtitle: '02 / ALTA INGENIERÍA',
-      miniTitle: 'MICRO-RELOJERÍA CLÍNICA',
+      miniTitle: 'MICRO-ODONTOLOGÍA DE PRECISIÓN',
       description: 'Fusión de odontología restauradora avanzada y diagnóstico digitalizado en tres dimensiones. Trabajamos con microscopios quirúrgicos y tolerancias micrométricas, garantizando un ajuste óptimo y una durabilidad sin precedentes.',
       highlight: 'Resolución micrométrica',
       mainImg: precisionShot,
