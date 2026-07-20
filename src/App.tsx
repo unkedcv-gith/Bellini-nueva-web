@@ -457,13 +457,11 @@ export default function App() {
               }
             }}
             onClick={handleDismissSplash}
-            className="fixed inset-0 w-full h-full bg-[#060606] z-[100] flex flex-col justify-between items-center py-20 px-6 touch-none select-none md:hidden cursor-pointer"
+            className="fixed inset-0 w-full h-full bg-black z-[100] flex flex-col justify-between items-center py-20 px-6 touch-none select-none md:hidden cursor-pointer"
           >
             {/* Absolute subtle gold/warm radial glow in the background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.06)_0%,transparent_70%)] pointer-events-none" />
             
-            {/* Abstract premium line in the background */}
-            <div className="absolute top-0 bottom-0 w-[1px] bg-white/5 left-1/2 -translate-x-1/2 pointer-events-none" />
 
             {/* Empty top spacing replacing top indicator to balance layout */}
             <div className="relative h-4" />
