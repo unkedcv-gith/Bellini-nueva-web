@@ -26,10 +26,18 @@ export function Navbar({ activeSection = 'hero' }: NavbarProps) {
       const index = sections.indexOf(targetId);
       if (index !== -1) {
         window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: index } }));
-        container.scrollTo({
-          left: index * container.clientWidth,
-          behavior: 'smooth'
-        });
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+          container.scrollTo({
+            top: index * container.clientHeight,
+            behavior: 'smooth'
+          });
+        } else {
+          container.scrollTo({
+            left: index * container.clientWidth,
+            behavior: 'smooth'
+          });
+        }
       }
     }
   };

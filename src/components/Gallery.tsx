@@ -14,18 +14,15 @@ import { resolveClinicalImagePath } from '../lib/imageResolver';
 const STATIC_FALLBACK_CASES = [
   {
     id: 'case_static_1',
-    category: 'Reconstrucción Dental Anterior de Alta Complejidad',
-    tabLabel: 'Caso Principal 01',
-    name: 'Reconstrucción Dental Anterior de Alta Complejidad',
-    desc: 'Restauración biomimética de la arquitectura adamantina mediante microcarillas cerámicas de preparación nula.',
-    challenge: 'Paciente presenta un severo desgaste erosivo incisal, desmineralización en el esmalte cervical y diastemas dispersos. Esta pérdida de soporte generaba fatiga biomecánica y sensibilidad constante.',
-    solution: 'Se elaboró un plan de adición mínimamente invasivo sin tallar dientes. Se cementaron microcarillas cerámicas sinterizadas imitando las propiedades prismáticas, refractarias y el halo opalescente natural de los dientes.',
-    material: 'Porcelana refractaria artesanal (0.3mm)',
-    duration: '2 citas (Diseño + Adhesión)',
+    category: 'Caso Clínico',
+    tabLabel: 'Caso 01',
+    name: 'Restauración Estética',
+    desc: 'Restauración biomimética mediante microcarillas cerámicas sin tallado de esmalte.',
+    challenge: 'Desgaste severo erosivo incisal, desmineralización cervical y diastemas dispersos.',
+    solution: 'Adición mínimamente invasiva con microcarillas de porcelana refractaria artesanal (0.3mm).',
     beforeImg: teethBefore,
     afterImg: teethAfter,
-    galleryImages: [belliniFoto1, belliniFoto2, belliniFoto3],
-    doctorNotes: 'El objetivo prioritario fue restablecer la guía anterior y proteger la articulación temporomandibular mediante una adición aditiva, respetando el tejido biológico sano del paciente.'
+    galleryImages: [belliniFoto1, belliniFoto2, belliniFoto3]
   }
 ];
 
@@ -148,10 +145,10 @@ export function Gallery() {
         {/* Concise Editorial Title */}
         <div className="flex flex-col md:flex-row justify-between md:items-end gap-3 border-b border-[#222]/30 pb-2.5 shrink-0">
           <div className="flex-grow max-w-3xl">
-            <span className="text-[9px] uppercase tracking-[0.3em] text-[#8e8e8e] mb-1 block font-light">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-bellini-primary/85 mb-1 block font-light">
               Gabinete Clínico / Casos Reales
             </span>
-            <h2 className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-[32px] leading-tight text-[#ECE8E1] font-semibold">
+            <h2 className="font-serif text-2xl sm:text-2xl md:text-3xl lg:text-[32px] leading-tight text-[#ECE8E1] font-semibold">
               {activeCase.name}
             </h2>
           </div>
@@ -183,11 +180,11 @@ export function Gallery() {
         </div>
 
         {/* Master Presentation Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-grow overflow-visible lg:overflow-hidden min-h-0 py-2.5 select-text">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-5 items-stretch flex-grow overflow-visible lg:overflow-hidden lg:min-h-0 py-2.5 select-text">
           
           {/* LEFT: Before/After Interactive Slider / Standalone Image */}
-          <div className="lg:col-span-7 flex flex-col justify-between h-auto lg:h-full min-h-0 bg-[#111]/20 rounded-xl p-3 border border-[#222]/30 gap-3">
-            <div className="w-full aspect-[16/10] lg:aspect-auto lg:flex-grow flex items-center justify-center relative rounded-lg overflow-hidden bg-[#060606] select-none">
+          <div className="lg:col-span-7 flex flex-col justify-between lg:justify-start lg:gap-4 h-auto lg:h-full lg:min-h-0 bg-[#111]/20 rounded-xl p-1.5 xs:p-2 sm:p-3 border border-[#222]/30 gap-3 shrink-0">
+            <div className="w-full aspect-[1.32] xs:aspect-[1.38] sm:aspect-[1.25] md:aspect-[1.4] lg:aspect-auto lg:flex-grow flex items-center justify-center relative rounded-lg overflow-hidden bg-[#060606] select-none shrink-0 lg:h-0 lg:min-h-0">
               
               {activeCase.beforeImg ? (
                 <>
@@ -206,7 +203,7 @@ export function Gallery() {
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute bottom-2.5 right-2.5 flex items-center pointer-events-none select-none">
-                    <span className="bg-[#0a0a0a]/90 text-[8px] uppercase tracking-[0.12em] text-bellini-primary py-1 px-2.5 rounded border border-white/5 shadow-md">
+                    <span className="bg-[#0a0a0a]/90 text-[10px] sm:text-xs uppercase tracking-[0.12em] text-bellini-primary py-1.5 px-3 rounded border border-white/10 shadow-md">
                       Registro de Resultado de Tratamiento
                     </span>
                   </div>
@@ -218,8 +215,8 @@ export function Gallery() {
             {/* Gallery of extra photos representing clinical process steps */}
             {activeCase.galleryImages && activeCase.galleryImages.length > 0 && (
               <div className="mt-2.5 flex flex-col gap-1.5 pointer-events-auto shrink-0">
-                <span className="text-[8.5px] uppercase tracking-widest text-[#666] font-semibold text-left pl-1">
-                  Registro del Proceso de Laboratorio & Secuencia Clínica:
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#888] font-semibold text-left pl-1">
+                  Secuencia clínica:
                 </span>
                 <div 
                   className="grid gap-2 transition-all duration-500"
@@ -229,7 +226,7 @@ export function Gallery() {
                     <div 
                       key={stepIdx}
                       onClick={() => setActiveLightboxImg(resolveClinicalImagePath(imgUrl))}
-                      className="group relative aspect-[16/10] bg-[#0c0c0c] border border-[#222] rounded overflow-hidden cursor-zoom-in transition-all duration-300 hover:border-bellini-primary/45 pointer-events-auto"
+                      className="group relative aspect-[1.5] xs:aspect-[1.5] sm:aspect-[1.6] bg-[#0c0c0c] border border-[#222] rounded overflow-hidden cursor-zoom-in transition-all duration-300 hover:border-bellini-primary/45 pointer-events-auto shrink-0"
                     >
                       <img 
                         src={resolveClinicalImagePath(imgUrl)} 
@@ -249,68 +246,45 @@ export function Gallery() {
           </div>
 
           {/* RIGHT: Sophisticated Case Technical File ("Ficha Técnica") */}
-          <div className="lg:col-span-5 flex flex-col bg-[#111]/40 border border-[#222]/50 hover:border-bellini-primary/25 rounded-xl transition-all duration-500 text-left h-auto lg:h-full min-h-0 overflow-visible lg:overflow-hidden select-text pointer-events-auto">
+          <div className="lg:col-span-5 flex flex-col bg-[#111]/40 border border-[#222]/50 hover:border-bellini-primary/25 rounded-xl transition-all duration-500 text-left h-auto lg:h-full lg:min-h-0 overflow-visible lg:overflow-hidden select-text pointer-events-auto shrink-0">
             
             {/* Scrollable informational details inside the card */}
             <div className="flex-grow overflow-visible lg:overflow-y-auto p-6 space-y-5 custom-scrollbar scrollbar-thin scrollbar-thumb-neutral-800 scrollbar-track-transparent">
               
               <div>
-                <span className="inline-block text-[10px] uppercase tracking-[0.2em] text-bellini-primary bg-bellini-primary/10 px-2.5 py-1 rounded font-semibold mb-2">
-                  {activeCase.category || 'Gabinete Clínico'}
+                <span className="inline-block text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-bellini-primary mb-2 font-mono font-bold">
+                  SINOPSIS CLÍNICA
                 </span>
-                <h3 className="font-serif text-xl md:text-2xl text-[#ECE8E1] tracking-wide leading-tight">
-                  {activeCase.name}
-                </h3>
-                <p className="text-xs md:text-sm text-[#8e8e8e] font-light leading-relaxed mt-2">
+                <p className="text-[13px] sm:text-sm text-[#c3c1bc] font-light leading-relaxed">
                   {activeCase.desc}
                 </p>
               </div>
 
               {/* Ficha Técnica Details */}
-              <div className="grid grid-cols-1 gap-5 border-t border-[#222]/60 pt-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-[#222]/60 pt-5">
                 
                 {/* Diagnóstico */}
-                <div>
-                  <h4 className="text-xs uppercase tracking-widest text-[#ECE8E1] font-semibold text-bellini-primary/90 mb-1.5 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-bellini-primary rounded-full"></span>
-                    Estado de Entrada (Antes)
-                  </h4>
-                  <p className="text-xs md:text-sm leading-relaxed text-[#c3c1bc] font-light">
-                    {activeCase.challenge}
-                  </p>
-                </div>
+                {activeCase.challenge && (
+                  <div>
+                    <h4 className="text-[11px] sm:text-xs uppercase tracking-widest text-[#999] font-semibold mb-1 flex items-center gap-1.5">
+                      <span className="w-1 h-1 bg-bellini-primary rounded-full"></span>
+                      Antes
+                    </h4>
+                    <p className="text-[12.5px] sm:text-xs leading-relaxed text-[#c3c1bc] font-light">
+                      {activeCase.challenge}
+                    </p>
+                  </div>
+                )}
 
                 {/* Tratamiento */}
-                <div>
-                  <h4 className="text-xs uppercase tracking-widest text-[#ECE8E1] font-semibold text-bellini-primary/90 mb-1.5 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#8e8e8e] rounded-full"></span>
-                    Tratamiento Clínico (Después)
-                  </h4>
-                  <p className="text-xs md:text-sm leading-relaxed text-[#c3c1bc] font-light">
-                    {activeCase.solution}
-                  </p>
-                </div>
-
-                {/* Technical specifications */}
-                <div className="grid grid-cols-2 gap-4 border-t border-[#222]/40 pt-5">
+                {activeCase.solution && (
                   <div>
-                    <h5 className="text-[10px] uppercase tracking-widest text-[#8e8e8e] mb-1">Material Utilizado</h5>
-                    <p className="text-xs md:text-sm text-[#ECE8E1] leading-snug font-medium">{activeCase.material}</p>
-                  </div>
-                  <div>
-                    <h5 className="text-[10px] uppercase tracking-widest text-[#8e8e8e] mb-1">Sesiones Clínicas</h5>
-                    <p className="text-xs md:text-sm text-[#ECE8E1] leading-snug font-medium">{activeCase.duration}</p>
-                  </div>
-                </div>
-
-                {/* Professional Observaciones */}
-                {activeCase.doctorNotes && (
-                  <div className="border-l border-bellini-primary/40 pl-4 py-2 bg-white/[0.02] rounded-r mt-3">
-                    <span className="block text-[8px] uppercase tracking-widest text-bellini-primary/70 mb-1 font-bold">
-                      Nota del Especialista
-                    </span>
-                    <p className="text-xs md:text-[13px] leading-relaxed italic text-[#8e8e8e]/95">
-                      &ldquo;{activeCase.doctorNotes}&rdquo;
+                    <h4 className="text-[11px] sm:text-xs uppercase tracking-widest text-bellini-primary font-semibold mb-1 flex items-center gap-1.5">
+                      <span className="w-1 h-1 bg-bellini-primary rounded-full"></span>
+                      Después
+                    </h4>
+                    <p className="text-[12.5px] sm:text-xs leading-relaxed text-[#c3c1bc] font-light">
+                      {activeCase.solution}
                     </p>
                   </div>
                 )}
@@ -326,13 +300,21 @@ export function Gallery() {
                   const container = document.getElementById('main-scroll-container');
                   if (container) {
                     window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: 4 } }));
-                    container.scrollTo({
-                      left: 4 * container.clientWidth,
-                      behavior: 'smooth'
-                    });
+                    const isMobile = window.innerWidth < 768;
+                    if (isMobile) {
+                      container.scrollTo({
+                        top: 4 * container.clientHeight,
+                        behavior: 'smooth'
+                      });
+                    } else {
+                      container.scrollTo({
+                        left: 4 * container.clientWidth,
+                        behavior: 'smooth'
+                      });
+                    }
                   }
                 }}
-                className="w-full text-center text-[10px] uppercase tracking-[0.2em] bg-bellini-primary text-[#0a0a0a] px-6 py-3 rounded hover:bg-[#fff] hover:text-[#0a0a0a] transition-all duration-300 font-semibold cursor-pointer border-none shadow-md active:scale-95 whitespace-nowrap"
+                className="w-full text-center text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] bg-bellini-primary text-[#0a0a0a] px-6 py-3.5 rounded hover:bg-[#fff] hover:text-[#0a0a0a] transition-all duration-300 font-bold cursor-pointer border-none shadow-md active:scale-95 whitespace-nowrap"
               >
                 Solicitar valoración del Caso →
               </button>
@@ -451,10 +433,18 @@ export function Gallery() {
                       const container = document.getElementById('main-scroll-container');
                       if (container) {
                         window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: 4 } }));
-                        container.scrollTo({
-                          left: 4 * container.clientWidth,
-                          behavior: 'smooth'
-                        });
+                        const isMobile = window.innerWidth < 768;
+                        if (isMobile) {
+                          container.scrollTo({
+                            top: 4 * container.clientHeight,
+                            behavior: 'smooth'
+                          });
+                        } else {
+                          container.scrollTo({
+                            left: 4 * container.clientWidth,
+                            behavior: 'smooth'
+                          });
+                        }
                       }
                     }}
                     className="text-[9px] uppercase tracking-[0.2em] underline text-bellini-primary hover:text-white border-none bg-transparent cursor-pointer font-semibold"

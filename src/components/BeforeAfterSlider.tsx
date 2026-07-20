@@ -52,7 +52,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
   return (
     <div 
       ref={containerRef}
-      className="relative w-full aspect-[16/10] md:aspect-auto h-auto md:h-full min-h-[200px] sm:min-h-[280px] md:min-h-[440px] lg:min-h-[480px] overflow-hidden select-none cursor-ew-resize rounded-lg border border-white/5 bg-[#080808] touch-none"
+      className="relative w-full aspect-[1.32] xs:aspect-[1.38] sm:aspect-[1.25] md:aspect-[1.4] lg:aspect-auto h-auto lg:h-full min-h-[255px] xs:min-h-[290px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-0 overflow-hidden select-none cursor-ew-resize rounded-lg border border-white/5 bg-[#080808] touch-none"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -66,9 +66,17 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
         referrerPolicy="no-referrer"
       />
       
-      {/* Label: AFTER */}
-      <div className="absolute top-4 right-4 bg-black/75 backdrop-blur-sm border border-white/10 px-2 py-0.5 rounded text-[8px] tracking-widest text-[#f4f3ef]/80 uppercase font-mono z-20">
-        Después
+      {/* Label: AFTER (wrapped in opposite clipPath to disappear symmetrically under slider) */}
+      <div 
+        className="absolute inset-0 pointer-events-none select-none z-20"
+        style={{ 
+          clipPath: `polygon(${sliderPosition}% 0, 100% 0, 100% 100%, ${sliderPosition}% 100%)`,
+          WebkitClipPath: `polygon(${sliderPosition}% 0, 100% 0, 100% 100%, ${sliderPosition}% 100%)`
+        }}
+      >
+        <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm border border-white/5 px-2 py-0.5 rounded text-[10px] tracking-widest text-[#f4f3ef]/60 uppercase font-mono font-bold sm:top-4 sm:right-4 sm:bg-black/80 sm:backdrop-blur-md sm:border-white/10 sm:px-3 sm:py-1.5 sm:rounded-md sm:text-xs sm:text-[#f4f3ef] sm:shadow-lg">
+          Después
+        </div>
       </div>
 
       {/* BEFORE picture clipped in foreground */}
@@ -87,48 +95,21 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
         />
         
         {/* Label: BEFORE */}
-        <div className="absolute top-4 left-4 bg-black/75 backdrop-blur-sm border border-white/10 px-2 py-0.5 rounded text-[8px] tracking-widest text-[#f4f3ef]/80 uppercase font-mono">
+        <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-sm border border-white/5 px-2 py-0.5 rounded text-[10px] tracking-widest text-[#f4f3ef]/60 uppercase font-mono z-20 font-bold sm:top-4 sm:left-4 sm:bg-black/80 sm:backdrop-blur-md sm:border-white/10 sm:px-3 sm:py-1.5 sm:rounded-md sm:text-xs sm:text-[#f4f3ef] sm:shadow-lg">
           Antes
         </div>
       </div>
-
-      {/* High-visibility animated instructions banner that disappears on interaction */}
-      <AnimatePresence>
-        {!hasInteracted && (
-          <motion.div 
-            initial={{ opacity: 0, y: 12, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.95 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-x-4 bottom-6 flex justify-center z-30 pointer-events-none select-none"
-          >
-            <motion.div 
-              animate={{ 
-                boxShadow: [
-                  "0 4px 20px 0px rgba(212,175,55,0.15)",
-                  "0 4px 20px 4px rgba(212,175,55,0.3)",
-                  "0 4px 20px 0px rgba(212,175,55,0.15)"
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="bg-[#0c0c0c]/95 backdrop-blur-md text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-bellini-primary py-2.5 px-6 rounded-full border border-bellini-primary/40 shadow-2xl flex items-center gap-3 text-center"
-            >
-              <span className="text-[12px] animate-pulse">⇄</span> Deslizar para ver el antes y después
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Interactive central dividing bar */}
       <div 
         className="absolute top-0 bottom-0 w-[1.5px] bg-bellini-primary/80 z-20 pointer-events-none"
         style={{ left: `${sliderPosition}%` }}
       >
-        {/* Sleek metallic luxury handlebar in the center */}
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full border border-bellini-primary bg-[#0c0c0c] shadow-2xl flex items-center justify-center">
-          <div className="flex gap-1 items-center justify-center">
-            <span className="text-[7px] text-[#f4f3ef]/45 select-none">◀</span>
-            <span className="text-[7px] text-[#f4f3ef]/45 select-none">▶</span>
+        {/* Sleek metallic luxury handlebar in the center - enlarged for perfect touch usability on mobile */}
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full border border-bellini-primary bg-[#0c0c0c]/90 backdrop-blur-md shadow-2xl flex items-center justify-center cursor-ew-resize hover:scale-110 active:scale-95 transition-transform duration-200">
+          <div className="flex gap-1.5 items-center justify-center">
+            <span className="text-[9px] text-[#f4f3ef] select-none font-bold animate-pulse">◀</span>
+            <span className="text-[9px] text-[#f4f3ef] select-none font-bold animate-pulse">▶</span>
           </div>
         </div>
       </div>

@@ -168,6 +168,9 @@ export default function App() {
 
     // Convert mouse wheel events to seamless section transitions
     const handleWheel = (e: WheelEvent) => {
+      if (window.innerWidth < 768) {
+        return; // Don't intercept wheel event on mobile
+      }
       // Direct escape when scrolling inside any custom scrollbar/overflow container
       const targetElement = e.target as HTMLElement;
       if (targetElement) {
@@ -329,18 +332,30 @@ export default function App() {
 
     // Track scroll progress and active section based on bounds
     const handleScroll = () => {
-      const scrollWidth = container.scrollWidth - container.clientWidth;
-      if (scrollWidth > 0) {
-        setScrollProgress((container.scrollLeft / scrollWidth) * 100);
-      }
-
-      const viewportWidth = container.clientWidth || window.innerWidth || 1;
-      const currentScrollLeft = container.scrollLeft;
-
-      const rawIndex = Math.round(currentScrollLeft / viewportWidth);
-      const currentIndex = isNaN(rawIndex) ? 0 : Math.max(0, Math.min(rawIndex, sections.length - 1));
-      if (sections[currentIndex]) {
-        setActiveSection(sections[currentIndex]);
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        const scrollHeight = container.scrollHeight - container.clientHeight;
+        if (scrollHeight > 0) {
+          setScrollProgress((container.scrollTop / scrollHeight) * 100);
+        }
+        const viewportHeight = container.clientHeight || window.innerHeight || 1;
+        const rawIndex = Math.round(container.scrollTop / viewportHeight);
+        const currentIndex = isNaN(rawIndex) ? 0 : Math.max(0, Math.min(rawIndex, sections.length - 1));
+        if (sections[currentIndex]) {
+          setActiveSection(sections[currentIndex]);
+        }
+      } else {
+        const scrollWidth = container.scrollWidth - container.clientWidth;
+        if (scrollWidth > 0) {
+          setScrollProgress((container.scrollLeft / scrollWidth) * 100);
+        }
+        const viewportWidth = container.clientWidth || window.innerWidth || 1;
+        const currentScrollLeft = container.scrollLeft;
+        const rawIndex = Math.round(currentScrollLeft / viewportWidth);
+        const currentIndex = isNaN(rawIndex) ? 0 : Math.max(0, Math.min(rawIndex, sections.length - 1));
+        if (sections[currentIndex]) {
+          setActiveSection(sections[currentIndex]);
+        }
       }
     };
 
@@ -374,11 +389,11 @@ export default function App() {
       {/* Modern Top Luxury Navbar */}
       <Navbar activeSection={activeSection} />
 
-      {/* Main Horizontal Snapping Container */}
+      {/* Main Snapping Container (Vertical on Mobile, Horizontal on Desktop) */}
       <div
         ref={containerRef}
         id="main-scroll-container"
-        className="flex flex-row flex-nowrap overflow-x-auto overflow-y-hidden h-full w-full snap-x snap-mandatory relative z-10 select-none scrollbar-none"
+        className="flex flex-col md:flex-row flex-nowrap overflow-y-auto md:overflow-y-hidden overflow-x-hidden md:overflow-x-auto h-full w-full snap-y md:snap-x snap-mandatory relative z-10 select-none scrollbar-none"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <div id="hero" className="w-screen h-full flex-shrink-0 snap-start">
@@ -398,20 +413,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Slim Dynamic Editorial Timeline at the bottom */}
-      <div className="fixed bottom-8 left-6 md:left-16 right-6 md:right-16 z-30 flex justify-between items-center pointer-events-none">
-        {/* Progress line */}
-        <div className="flex items-center gap-4 w-1/3">
-          <span className="font-serif text-[10px] tracking-widest text-[#f4f3ef]/40 uppercase">01</span>
-          <div className="relative h-[1px] flex-grow bg-white/10">
-            <div 
-              className="absolute top-0 left-0 h-full bg-[var(--color-bellini-bone)] transition-all duration-300 ease-out"
-              style={{ width: `${scrollProgress}%` }}
-            ></div>
-          </div>
-          <span className="font-serif text-[10px] tracking-widest text-[#f4f3ef]/40 uppercase">05</span>
-        </div>
-      </div>
+
 
       {/* Behind the scenes clinical database editing console */}
       <AdminPanel 

@@ -17,11 +17,11 @@ export function Services({ activeSubSlide, onSubSlideChange }: ServicesProps) {
   const activeIndex = activeSubSlide;
 
   const services = [
-    { title: 'Estética', subtitle: 'Dental', desc: 'Carillas cerámicas de espesor mínimo, blanqueamiento de alta precisión y escultura de composites.', img: img1 },
-    { title: 'Rehabilitación', subtitle: 'Oral', desc: 'Restauración integral de la función y biología con materiales biomiméticos de última generación.', img: img2 },
-    { title: 'Implantes', subtitle: '3D', desc: 'Implantología guiada por software 3D para posicionamiento quirúrgico milimétrico sin incisiones mayores.', img: img3 },
-    { title: 'Diseño', subtitle: 'Digital', desc: 'Arquitectura dental digital. Planificación para predecir el resultado final con exactitud.', img: img4 },
-    { title: 'Ortodoncia', subtitle: 'Invisible', desc: 'Alineación silenciosa y eficiente. Micro-movimientos calculados para un flujo ininterrumpido diario.', img: img5 },
+    { title: 'Estética', subtitle: 'Dental', desc: 'Carillas cerámicas ultrafinas, blanqueamiento de alta precisión y escultura dental personalizada.', img: img1 },
+    { title: 'Rehabilitación', subtitle: 'Oral', desc: 'Prótesis de alta durabilidad y restauración dental guiada digitalmente.', img: img2 },
+    { title: 'Implantes', subtitle: '3D', desc: 'Cirugía guiada mínimamente invasiva con carga inmediata de alta predictibilidad.', img: img3 },
+    { title: 'Diseño', subtitle: 'Digital', desc: 'Planificación 3D y mockup personalizado para previsualizar su sonrisa ideal.', img: img4 },
+    { title: 'Ortodoncia', subtitle: 'Invisible', desc: 'Alineadores transparentes secuenciados mediante ortodoncia digital avanzada.', img: img5 },
   ];
 
   return (
@@ -47,7 +47,7 @@ export function Services({ activeSubSlide, onSubSlideChange }: ServicesProps) {
         <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b border-r border-bellini-primary" />
         
         {/* Left Panel: Entirely dedicated to the modern, elegant, and contemporary visual gallery */}
-        <div className="w-full md:w-[45%] min-h-[420px] md:min-h-[580px] border-b md:border-b-0 md:border-r border-white/5 relative bg-[#0b0b0b] overflow-hidden flex items-center justify-center">
+        <div className="w-full md:w-[45%] min-h-[300px] xs:min-h-[360px] md:min-h-[580px] border-b md:border-b-0 md:border-r border-white/5 relative bg-[#0b0b0b] overflow-hidden flex items-center justify-center">
           {/* Subtle glowing ambient behind image */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.03)_0%,transparent_70%)] pointer-events-none" />
           
@@ -77,42 +77,19 @@ export function Services({ activeSubSlide, onSubSlideChange }: ServicesProps) {
             <div className="absolute top-3 right-3 w-4 h-4 border-t border-r border-white/20 pointer-events-none z-20" />
             <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-white/20 pointer-events-none z-20" />
             <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/20 pointer-events-none z-20" />
-
-            {/* Modern vertical text strip decoration */}
-            <div className="absolute top-6 left-6 flex items-center gap-2 z-20 mix-blend-difference">
-              <span className="text-[7px] font-mono tracking-[0.4em] text-white/40 uppercase">
-                CLINICAL PRACTICE //
-              </span>
-              <span className="text-[7px] font-mono tracking-[0.2em] text-bellini-primary uppercase">
-                {services[activeIndex].title}
-              </span>
-            </div>
-
-            {/* Bottom minimal HUD bar */}
-            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-20 mix-blend-difference">
-              <div className="flex flex-col">
-                <span className="text-[6px] uppercase tracking-[0.3em] text-white/30 mb-0.5 font-mono">REGISTRO DIGITAL</span>
-                <span className="text-[10px] uppercase tracking-[0.15em] text-white/95 font-light font-sans">FIG. 0{activeIndex + 1}</span>
-              </div>
-              <div className="flex flex-col items-end">
-                <span className="text-[6px] uppercase tracking-[0.3em] text-white/30 mb-0.5 font-mono">DISCIPLINA</span>
-                <span className="text-[10px] uppercase tracking-[0.15em] text-bellini-primary font-medium font-sans">
-                  {services[activeIndex].title} {services[activeIndex].subtitle}
-                </span>
-              </div>
-            </div>
           </div>
         </div>
 
         {/* Right Panel: The Ledger List */}
-        <div className="w-full md:w-[55%] flex flex-col pt-8 md:pt-0 justify-center">
+        <div className="w-full md:w-[55%] flex flex-col pt-4 md:pt-0 justify-center">
            {services.map((service, index) => {
              const isActive = activeIndex === index;
              return (
                <motion.div
                  key={service.title}
                  onMouseEnter={() => onSubSlideChange(index)}
-                 className="group relative flex flex-col py-6 lg:py-8 px-8 md:px-12 lg:px-16 border-b border-white/5 last:border-b-0 cursor-pointer overflow-hidden transition-colors duration-500 hover:bg-white/[0.02]"
+                 onClick={() => onSubSlideChange(index)}
+                 className="group relative flex flex-col py-4 xs:py-5 md:py-6 lg:py-8 px-6 md:px-12 lg:px-16 border-b border-white/5 last:border-b-0 cursor-pointer overflow-hidden transition-colors duration-500 hover:bg-white/[0.02]"
                >
                  {/* Fine vertical line on active */}
                  <div className={`absolute left-0 top-0 bottom-0 w-[1px] transition-colors duration-500 ${isActive ? 'bg-bellini-primary' : 'bg-transparent'}`} />
