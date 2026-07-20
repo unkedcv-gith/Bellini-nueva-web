@@ -141,41 +141,14 @@ export function Hero({ activeSubSlide = 0, onSubSlideChange }: HeroProps) {
         </div>
       </div>
 
-      {/* Sutil microindicador de scroll (Vertical en móvil, Horizontal en desktop) */}
-      <div className="absolute bottom-[84px] md:bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none opacity-80 select-none drop-shadow-md">
-        <span className="text-[10px] md:text-[7.5px] uppercase tracking-[0.3em] text-[#A3A6AC] mb-2 font-light text-center">
-          <span className="block md:hidden">Deslizar para comenzar</span>
-          <span className="hidden md:block">Scroll para recorrer</span>
+      {/* Sutil microindicador de scroll (Solo en desktop) */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center pointer-events-none opacity-80 select-none drop-shadow-md">
+        <span className="text-[7.5px] uppercase tracking-[0.3em] text-[#A3A6AC] mb-2 font-light text-center">
+          Scroll para recorrer
         </span>
         
-        {/* Mobile Vertical Indicator */}
-        <div className="flex md:hidden flex-col items-center gap-1">
-          <div className="w-5 h-8 rounded-full border border-[#A3A6AC]/50 relative flex justify-center py-1">
-            <motion.div 
-              className="w-1.5 h-1.5 rounded-full bg-bellini-primary"
-              animate={{ y: [0, 12, 0] }}
-              transition={{
-                duration: 2.2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </div>
-          <motion.span 
-            className="text-[10px] text-[#A3A6AC] leading-none rotate-90"
-            animate={{ y: [0, 3, 0] }}
-            transition={{
-              duration: 2.2,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            →
-          </motion.span>
-        </div>
-
         {/* Desktop Horizontal Indicator */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <div className="w-10 h-5 rounded-full border border-[#A3A6AC]/50 relative flex items-center px-1">
             <motion.div 
               className="w-1.5 h-1.5 rounded-full bg-bellini-primary"

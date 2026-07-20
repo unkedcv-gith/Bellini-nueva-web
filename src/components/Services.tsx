@@ -47,25 +47,24 @@ export function Services({ activeSubSlide, onSubSlideChange }: ServicesProps) {
         <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b border-r border-bellini-primary" />
         
         {/* Left Panel: Entirely dedicated to the modern, elegant, and contemporary visual gallery */}
-        <div className="w-full md:w-[45%] min-h-[300px] xs:min-h-[360px] md:min-h-[580px] border-b md:border-b-0 md:border-r border-white/5 relative bg-[#0b0b0b] overflow-hidden flex items-center justify-center">
+        <div className="sticky top-0 z-20 w-full md:relative md:top-auto md:z-auto md:w-[45%] h-[180px] xs:h-[210px] md:h-auto md:min-h-[580px] border-b md:border-b-0 md:border-r border-white/5 bg-[#0b0b0b] overflow-hidden flex items-center justify-center shrink-0 shadow-xl md:shadow-none">
           {/* Subtle glowing ambient behind image */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.03)_0%,transparent_70%)] pointer-events-none" />
           
           {/* Continuous slow pan image viewport with clean editorial spacing */}
-          <div className="absolute inset-4 md:inset-6 overflow-hidden rounded-lg group">
-            <AnimatePresence mode="wait">
+          <div className="absolute inset-3 md:inset-6 overflow-hidden rounded-lg group">
+            <AnimatePresence>
               <motion.img
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 1.1, filter: 'brightness(0.6) contrast(1.05)' }}
+                initial={{ opacity: 0, scale: 1.05 }}
                 animate={{ 
                   opacity: 0.85, 
-                  scale: 1.02, 
-                  filter: 'brightness(0.95) contrast(1)',
+                  scale: 1, 
                 }}
-                exit={{ opacity: 0, scale: 0.97, filter: 'brightness(0.5) contrast(0.95)' }}
-                transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
                 src={services[activeIndex].img}
-                className="w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-104 group-hover:opacity-100 group-hover:filter group-hover:brightness-100"
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-104 group-hover:opacity-100"
               />
             </AnimatePresence>
 

@@ -9,6 +9,7 @@
  */
 
 import { useRef, useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -20,6 +21,18 @@ import { AdminPanel } from './components/AdminPanel';
 
 export default function App() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [showSplash, setShowSplash] = useState(false);
+
+  useEffect(() => {
+    // Only show the splash screen on mobile viewports (< 768px)
+    if (window.innerWidth < 768) {
+      setShowSplash(true);
+    }
+  }, []);
+
+  const handleDismissSplash = () => {
+    setShowSplash(false);
+  };
 
   // Monitor event cues requesting to open the administrative terminal
   useEffect(() => {
@@ -424,6 +437,107 @@ export default function App() {
           window.dispatchEvent(new CustomEvent('bellini-cases-updated'));
         }} 
       />
+
+      {/* Elegant Mobile Splash Screen Loader */}
+      <AnimatePresence>
+        {showSplash && (
+          <motion.div
+            initial={{ opacity: 1, y: 0 }}
+            exit={{ 
+              y: '-100%', 
+              opacity: 0,
+              transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+            }}
+            drag="y"
+            dragConstraints={{ top: -300, bottom: 0 }}
+            dragElastic={{ top: 0.1, bottom: 0 }}
+            onDragEnd={(event, info) => {
+              if (info.offset.y < -50 || info.velocity.y < -200) {
+                handleDismissSplash();
+              }
+            }}
+            onClick={handleDismissSplash}
+            className="fixed inset-0 w-full h-full bg-[#060606] z-[100] flex flex-col justify-between items-center py-20 px-6 touch-none select-none md:hidden cursor-pointer"
+          >
+            {/* Absolute subtle gold/warm radial glow in the background */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.06)_0%,transparent_70%)] pointer-events-none" />
+            
+            {/* Abstract premium line in the background */}
+            <div className="absolute top-0 bottom-0 w-[1px] bg-white/5 left-1/2 -translate-x-1/2 pointer-events-none" />
+
+            {/* Empty top spacing replacing top indicator to balance layout */}
+            <div className="relative h-4" />
+
+            {/* Centered Logo & Elegant Welcome Message */}
+            <div className="relative z-10 flex flex-col items-center max-w-sm">
+              {/* Logo with fade-in from translucent to gold */}
+              <motion.div
+                initial={{ opacity: 0.2, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.6, ease: "easeOut" }}
+                className="flex flex-col items-center mb-8"
+              >
+                <span 
+                  className="text-4xl tracking-[0.25em] font-serif uppercase text-bellini-primary"
+                  style={{ transform: 'translateX(0.125em)' }}
+                >
+                  Bellini
+                </span>
+                <span 
+                  className="text-[9px] tracking-[0.45em] font-sans uppercase text-bellini-primary/80 mt-1.5"
+                  style={{ transform: 'translateX(0.225em)' }}
+                >
+                  Odontología
+                </span>
+              </motion.div>
+
+              {/* Welcome message */}
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 0.85 }}
+                transition={{ delay: 0.6, duration: 1.2 }}
+                className="text-center text-[13.5px] font-serif italic text-[#ece8e1]/80 leading-relaxed max-w-xs px-2"
+              >
+                Donde la precisión de la ciencia<br />
+                se funde con el arte de su sonrisa.
+              </motion.p>
+            </div>
+
+            {/* Bottom sliding finger gesture graphic */}
+            <div className="relative z-10 flex flex-col items-center gap-1">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#A3A6AC] font-light text-center">
+                Deslizar para comenzar
+              </span>
+              
+              {/* Animated Scroll Capsule with moving dot */}
+              <div className="flex flex-col items-center mt-5 gap-2">
+                <div className="w-5 h-9 rounded-full border border-bellini-primary/50 relative flex justify-center py-1.5">
+                  <motion.div 
+                    className="w-1.5 h-1.5 rounded-full bg-bellini-primary shadow-[0_0_8px_rgba(212,175,55,0.8)]"
+                    animate={{ y: [0, 14, 0] }}
+                    transition={{
+                      duration: 2.0,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
+                <motion.span 
+                  className="text-[9px] text-bellini-primary/60 font-sans leading-none mt-1"
+                  animate={{ y: [0, 4, 0] }}
+                  transition={{
+                    duration: 2.0,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  ▼
+                </motion.span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

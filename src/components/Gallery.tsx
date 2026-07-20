@@ -153,7 +153,7 @@ export function Gallery() {
             </h2>
           </div>
           
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start gap-3 shrink-0 w-full sm:w-auto">
             <span className="text-[10px] text-[#8e8e8e] font-light max-w-xs hidden lg:block leading-relaxed text-left">
               {activeCase.beforeImg 
                 ? 'Examine los registros reales deslizando el mouse de un lado a otro sobre la imagen central.'
@@ -161,13 +161,13 @@ export function Gallery() {
             </span>
             <button 
               onClick={() => setShowFutureCasesModal(true)}
-              className="group text-[9px] uppercase tracking-[0.2em] border border-bellini-primary px-4 py-2 rounded-full hover:bg-bellini-primary hover:text-[#0a0a0a] hover:border-bellini-primary transition-all duration-300 font-semibold cursor-pointer whitespace-nowrap active:scale-95 pointer-events-auto flex items-center gap-1.5"
+              className="group text-[9px] uppercase tracking-[0.2em] bg-bellini-primary text-[#0a0a0a] border border-bellini-primary px-5 py-2.5 sm:px-4 sm:py-2 rounded-full hover:bg-transparent hover:text-bellini-primary hover:border-bellini-primary transition-all duration-300 font-bold cursor-pointer whitespace-nowrap active:scale-95 pointer-events-auto flex items-center justify-center gap-1.5 mx-auto sm:mx-0 sm:bg-transparent sm:text-bellini-primary sm:font-semibold"
             >
               Ver más casos
               <motion.span 
-                animate={{ x: [0, 5, 0] }}
+                animate={{ x: [0, 6, 0] }}
                 transition={{
-                  duration: 1.8,
+                  duration: 1.2,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
@@ -316,7 +316,8 @@ export function Gallery() {
                 }}
                 className="w-full text-center text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] bg-bellini-primary text-[#0a0a0a] px-6 py-3.5 rounded hover:bg-[#fff] hover:text-[#0a0a0a] transition-all duration-300 font-bold cursor-pointer border-none shadow-md active:scale-95 whitespace-nowrap"
               >
-                Solicitar valoración del Caso →
+                <span className="sm:hidden">Consultar Caso →</span>
+                <span className="hidden sm:inline">Solicitar valoración del Caso →</span>
               </button>
             </div>
           </div>
@@ -348,26 +349,23 @@ export function Gallery() {
                 {/* Close Button */}
                 <button
                   onClick={() => setShowFutureCasesModal(false)}
-                  className="absolute top-4 right-4 text-[#8e8e8e] hover:text-white text-xs uppercase tracking-widest p-2 cursor-pointer transition-all border-none bg-transparent"
+                  className="absolute top-4 right-4 bg-[#1a1a1a] hover:bg-bellini-primary hover:text-[#0a0a0a] border border-[#333] hover:border-[#cbc6bc] px-3.5 py-1.5 rounded-full text-[10px] sm:text-xs uppercase tracking-widest text-[#ECE8E1] cursor-pointer transition-all duration-300 font-bold active:scale-95 z-50 flex items-center gap-1"
                 >
-                  Cerrar [X]
+                  <span>← Volver</span>
                 </button>
 
                 {/* Modal Title */}
-                <div className="mb-6 border-b border-[#222]/60 pb-5">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-bellini-primary/80 block mb-1">
-                    Gabinete Clínico Completo
+                <div className="mb-5 border-b border-[#222]/40 pb-4">
+                  <span className="text-[9px] uppercase tracking-[0.3em] text-bellini-primary/80 block mb-1">
+                    Gabinete Clínico
                   </span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-[#ECE8E1] font-light">
-                    Archivo de Casos Registrados
+                  <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-[#ECE8E1] font-light">
+                    Archivo de Casos
                   </h3>
-                  <p className="text-xs text-[#8e8e8e] font-light mt-2 max-w-2xl leading-relaxed">
-                    Explore la bitácora interactiva de mimetismo y reconstrucción oral. Haga clic en cualquiera de los casos presentados a continuación para cargarlo en el visualizador del gabinete principal y explorar su secuencia fotográfica completa.
-                  </p>
                 </div>
 
                 {/* Dinámicos Casos Grid - Scrollable area inside Modal */}
-                <div className="flex-grow overflow-y-auto space-y-4 pr-1 mb-6 custom-scrollbar">
+                <div className="flex-grow overflow-y-auto space-y-3 pr-1 mb-6 custom-scrollbar">
                   {cases.map((c, idx) => (
                     <div 
                       key={c.id || idx}
@@ -375,58 +373,48 @@ export function Gallery() {
                         setActiveCaseIndex(idx);
                         setShowFutureCasesModal(false);
                       }}
-                      className={`p-5 rounded-xl transition-all duration-300 grid grid-cols-1 md:grid-cols-12 gap-4 items-center cursor-pointer pointer-events-auto border-2 ${
+                      className={`p-3.5 sm:p-4.5 rounded-xl transition-all duration-300 flex flex-row items-center justify-between gap-4 cursor-pointer pointer-events-auto border-2 ${
                         activeCaseIndex === idx
-                          ? 'bg-[#FAF7F0] border-bellini-primary shadow-xl scale-[1.01]'
+                          ? 'bg-[#FAF7F0] border-bellini-primary shadow-lg scale-[1.01]'
                           : 'bg-[#ECE8E1] hover:bg-[#F2EFE8] border-[#dbd6cc] hover:border-[#cbc6bc]'
                       }`}
                     >
-                      {/* Left Column: Category and Custom Position Label */}
-                      <div className="md:col-span-3 flex flex-col gap-1 text-left">
-                        <span className="text-[10px] uppercase tracking-widest text-[#7C6E55] font-semibold leading-snug">
-                          {c.category}
-                        </span>
-                      </div>
-
-                      {/* Center Column: Text description of the case in Dark Mode colors reversed */}
-                      <div className="md:col-span-6 flex flex-col justify-center text-left">
-                        <h4 className="font-serif text-[16px] text-[#111111] tracking-wide font-medium leading-snug">
+                      {/* Left: Info Block (Single Title & Subtitle/bajada) */}
+                      <div className="flex-grow min-w-0 flex flex-col text-left">
+                        <h4 className="font-serif text-[14px] sm:text-[16px] text-[#111111] tracking-wide font-medium leading-snug truncate">
                           {c.name}
                         </h4>
-                        <p className="text-[11.5px] text-[#4A463F] font-light leading-relaxed mt-1 line-clamp-2">
+                        <p className="text-[10px] sm:text-[11.5px] text-[#5A564F] font-light leading-relaxed mt-0.5 line-clamp-1">
                           {c.desc}
                         </p>
                       </div>
 
-                      {/* Right Column: Thumbnail image and action */}
-                      <div className="md:col-span-3 text-right flex items-center justify-end gap-3 md:flex-row flex-row-reverse w-full">
+                      {/* Right: Wide Thumbnail and Active/Explore button next to it */}
+                      <div className="flex items-center gap-3 shrink-0">
                         {c.afterImg && (
-                          <div className="w-12 h-12 rounded-lg overflow-hidden border border-[#cbc6bc] bg-black/5 shrink-0 self-center">
+                          <div className="w-16 h-10 sm:w-20 sm:h-12 rounded overflow-hidden border border-[#cbc6bc]/60 bg-black/5 shrink-0">
                             <img 
                               src={resolveClinicalImagePath(c.afterImg)} 
                               alt={c.name} 
-                              className="w-full h-full object-cover filter transition-all duration-500"
+                              className="w-full h-full object-cover"
                               referrerPolicy="no-referrer"
                             />
                           </div>
                         )}
-                        <div className="text-left md:text-right flex flex-col gap-1 flex-grow">
-                          <span className={`inline-block text-[8.5px] font-bold uppercase tracking-widest px-2.5 py-1 rounded w-fit md:ml-auto transition-all ${
-                            activeCaseIndex === idx 
-                              ? 'bg-bellini-primary text-[#0a0a0a]' 
-                              : 'bg-[#1c1c1c] text-[#FAF7F0] hover:bg-[#333]'
-                          }`}>
-                            {activeCaseIndex === idx ? 'Activo' : 'Explorar ➔'}
-                          </span>
-                        </div>
+                        <span className={`inline-block text-[8px] sm:text-[8.5px] font-bold uppercase tracking-widest px-2.5 py-1.5 rounded transition-all shrink-0 ${
+                          activeCaseIndex === idx 
+                            ? 'bg-bellini-primary text-[#0a0a0a]' 
+                            : 'bg-[#1c1c1c] text-[#FAF7F0]'
+                        }`}>
+                          {activeCaseIndex === idx ? 'Activo' : 'Explorar'}
+                        </span>
                       </div>
                     </div>
                   ))}
                 </div>
 
                 {/* Footer Modal Info */}
-                <div className="flex flex-col sm:flex-row justify-between items-center pt-4 border-t border-[#222]/40 text-[9px] uppercase tracking-[0.2em] text-[#555] gap-3">
-                  <span>Bellini Dental Studio · Innovación Biométrica</span>
+                <div className="flex justify-center items-center pt-4 border-t border-[#222]/40 text-[9px] uppercase tracking-[0.2em] w-full text-center">
                   <button 
                     onClick={() => {
                       setShowFutureCasesModal(false);
