@@ -138,7 +138,7 @@ export function Gallery() {
   return (
     <section 
       id="casos" 
-      className="w-full h-full relative px-4 md:px-12 lg:px-16 pt-20 sm:pt-28 md:pt-36 pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
+      className="w-full h-full relative px-4 md:px-12 lg:px-16 pt-24 sm:pt-32 md:pt-[18vh] lg:pt-[15vh] pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
     >
       <div className="max-w-7xl mx-auto w-full flex flex-col h-full justify-between z-10 min-h-0 select-text overflow-y-auto lg:overflow-visible custom-scrollbar py-2">
         
@@ -161,7 +161,7 @@ export function Gallery() {
             </span>
             <button 
               onClick={() => setShowFutureCasesModal(true)}
-              className="group text-[9px] uppercase tracking-[0.2em] bg-bellini-primary text-[#0a0a0a] border border-bellini-primary px-5 py-2.5 sm:px-4 sm:py-2 rounded-full hover:bg-transparent hover:text-bellini-primary hover:border-bellini-primary transition-all duration-300 font-bold cursor-pointer whitespace-nowrap active:scale-95 pointer-events-auto flex items-center justify-center gap-1.5 mx-auto sm:mx-0 sm:bg-transparent sm:text-bellini-primary sm:font-semibold"
+              className="group text-[9px] uppercase tracking-[0.2em] bg-[#FAF7F0] text-[#0a0a0a] border border-[#FAF7F0] px-5 py-2.5 sm:px-5 sm:py-2.5 rounded-full hover:bg-white hover:border-white transition-all duration-300 font-bold cursor-pointer whitespace-nowrap active:scale-95 pointer-events-auto flex items-center justify-center gap-1.5 mx-auto sm:mx-0"
             >
               Ver más casos
               <motion.span 
@@ -461,30 +461,104 @@ export function Gallery() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={() => setActiveLightboxImg(null)}
-                className="fixed inset-0 bg-black/98 z-[999999] backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-8 cursor-zoom-out pointer-events-auto animate-fadeIn"
+                className="fixed inset-0 bg-black/98 z-[999999] backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-8 cursor-default pointer-events-auto animate-fadeIn"
               >
+                {/* Highly visible gold-accented Close Button */}
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveLightboxImg(null);
+                  }}
+                  className="absolute top-4 right-4 md:top-6 md:right-6 bg-black/80 hover:bg-bellini-primary hover:text-black text-[#ECE8E1] border border-white/10 hover:border-bellini-primary px-4 py-2.5 rounded-full transition-all duration-300 z-[1000000] cursor-pointer shadow-xl active:scale-95 flex items-center justify-center gap-2 font-sans text-xs font-bold uppercase tracking-wider"
+                  aria-label="Cerrar galería"
+                >
+                  <span className="text-sm font-semibold">✕</span>
+                  <span className="text-[10px] tracking-widest">Cerrar</span>
+                </button>
+
                 {/* Modal Container */}
                 <div 
-                  className="bg-[#0b0b0b] border border-[#222] rounded-2xl max-w-5xl w-full max-h-[85vh] flex flex-col md:flex-row overflow-hidden shadow-2xl"
+                  className="bg-[#0b0b0b] border border-[#222] rounded-2xl max-w-5xl w-full max-h-[90vh] md:max-h-[85vh] flex flex-col md:flex-row overflow-y-auto md:overflow-hidden shadow-2xl relative"
                   onClick={(e) => e.stopPropagation()}
                 >
                   
-                  {/* Left panel: Clinical Image */}
-                  <div className="flex-grow md:w-3/5 bg-black flex items-center justify-center p-4 relative group">
-                    <img 
-                      src={resolveClinicalImagePath(activeLightboxImg || '')} 
-                      alt="Registro clínico de laboratorio" 
-                      className="max-w-full max-h-[50vh] md:max-h-[70vh] object-contain rounded-lg shadow-lg border border-white/5"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute top-4 left-4 bg-black/80 px-2.5 py-1 rounded border border-white/5 text-[8.5px] font-mono text-bellini-primary uppercase tracking-widest">
-                      Imagen {index !== -1 ? String(index + 1).padStart(2, '0') : 'Fase'}
+                  {/* Left panel: Clinical Image & Navigation */}
+                  <div className="flex-grow md:w-3/5 bg-black flex flex-col items-center justify-between p-4 relative group">
+                    <div className="relative w-full flex-grow flex items-center justify-center min-h-[30vh]">
+                      {/* Left Navigation Arrow */}
+                      {activeCase.galleryImages && activeCase.galleryImages.length > 1 && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            const prevIndex = (index - 1 + activeCase.galleryImages.length) % activeCase.galleryImages.length;
+                            setActiveLightboxImg(activeCase.galleryImages[prevIndex]);
+                          }}
+                          className="absolute left-2 bg-black/60 hover:bg-bellini-primary hover:text-[#0a0a0a] text-[#ECE8E1] border border-white/10 p-2.5 rounded-full transition-all cursor-pointer z-20 active:scale-95 flex items-center justify-center"
+                          aria-label="Anterior"
+                        >
+                          <span className="text-xs font-bold font-mono">◀</span>
+                        </button>
+                      )}
+
+                      <img 
+                        src={resolveClinicalImagePath(activeLightboxImg || '')} 
+                        alt="Registro clínico de laboratorio" 
+                        className="max-w-full max-h-[48vh] md:max-h-[62vh] object-contain rounded-lg shadow-lg border border-white/5"
+                        referrerPolicy="no-referrer"
+                      />
+
+                      {/* Right Navigation Arrow */}
+                      {activeCase.galleryImages && activeCase.galleryImages.length > 1 && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            const nextIndex = (index + 1) % activeCase.galleryImages.length;
+                            setActiveLightboxImg(activeCase.galleryImages[nextIndex]);
+                          }}
+                          className="absolute right-2 bg-black/60 hover:bg-bellini-primary hover:text-[#0a0a0a] text-[#ECE8E1] border border-white/10 p-2.5 rounded-full transition-all cursor-pointer z-20 active:scale-95 flex items-center justify-center"
+                          aria-label="Siguiente"
+                        >
+                          <span className="text-xs font-bold font-mono">▶</span>
+                        </button>
+                      )}
                     </div>
+
+                    {/* Navigation bar below image */}
+                    {activeCase.galleryImages && activeCase.galleryImages.length > 1 && (
+                      <div className="w-full mt-3 pt-3 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 px-2">
+                        <div className="text-[10px] tracking-wider text-[#8e8e8e] font-sans">
+                          Fase <span className="text-bellini-primary font-bold font-mono text-xs">{index + 1}</span> de <span className="text-[#ECE8E1] font-mono text-xs">{activeCase.galleryImages.length}</span>
+                        </div>
+                        
+                        <div className="flex items-center gap-2 overflow-x-auto py-1">
+                          {activeCase.galleryImages.map((imgUrl: string, gIdx: number) => (
+                            <button
+                              key={gIdx}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveLightboxImg(imgUrl);
+                              }}
+                              className={`relative rounded overflow-hidden transition-all duration-300 active:scale-95 cursor-pointer ${
+                                index === gIdx 
+                                  ? 'w-[52px] h-[36px] border-2 border-bellini-primary scale-110 shadow-lg z-10' 
+                                  : 'w-[42px] h-[28px] border border-white/10 opacity-45 hover:opacity-100'
+                              }`}
+                            >
+                              <img 
+                                src={resolveClinicalImagePath(imgUrl)} 
+                                alt={`Fase ${gIdx + 1}`}
+                                className="w-full h-full object-cover"
+                                referrerPolicy="no-referrer"
+                              />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Right panel: Descriptive Content */}
-                  <div className="w-full md:w-2/5 p-6 md:p-8 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#222]/80 bg-[#0e0e0e]/50 text-left select-text">
+                  <div className="w-full md:w-2/5 p-6 md:p-8 flex flex-col justify-between border-t md:border-t-0 md:border-l border-[#222]/80 bg-[#0e0e0e]/50 text-left select-text min-h-0 md:overflow-y-auto">
                     <div className="space-y-4">
                       <div>
                         <span className="text-[10px] uppercase tracking-[0.25em] text-bellini-primary font-bold block mb-1">
@@ -493,16 +567,13 @@ export function Gallery() {
                         <h4 className="font-serif text-lg text-white font-light leading-snug">
                           {activeCase.name}
                         </h4>
-                        <span className="text-[10px] text-[#666] block mt-0.5 uppercase tracking-wider">
-                          Etiqueta: {activeCase.tabLabel}
-                        </span>
                       </div>
 
                       <div className="border-t border-[#222]/40 pt-4">
                         <span className="text-[10px] uppercase tracking-widest text-[#8e8e8e] block mb-2 font-semibold">
                           Descripción de la Imagen
                         </span>
-                        <p className="text-xs md:text-sm text-[#c3c1bc] font-light leading-relaxed whitespace-pre-line bg-[#080808]/40 p-4 rounded-lg border border-[#1a1a1a]">
+                        <p className="text-xs md:text-sm text-[#c3c1bc] font-light leading-relaxed whitespace-pre-line bg-[#080808]/40 p-4 rounded-lg border border-[#1a1a1a] max-h-[160px] md:max-h-[350px] overflow-y-auto custom-scrollbar">
                           {descText}
                         </p>
                       </div>
@@ -514,18 +585,14 @@ export function Gallery() {
                       </div>
                       <button 
                         onClick={() => setActiveLightboxImg(null)}
-                        className="text-[9px] uppercase tracking-wider text-bellini-primary bg-[#1c1c1c] border border-[#333] hover:border-bellini-primary px-3 py-1.5 rounded transition-all cursor-pointer font-bold active:scale-95"
+                        className="text-[9px] uppercase tracking-wider text-bellini-primary bg-[#1c1c1c] border border-[#333] hover:border-bellini-primary px-4 py-2 rounded transition-all cursor-pointer font-bold active:scale-95"
                       >
-                        Retornar ➔
+                        Volver ➔
                       </button>
                     </div>
                   </div>
 
                 </div>
-                
-                <span className="text-[8.5px] tracking-widest text-[#555] uppercase mt-4">
-                  HAGA CLIC AFUERA PARA CERRAR EL GABINETE CLÍNICO
-                </span>
               </motion.div>
             );
           })()}

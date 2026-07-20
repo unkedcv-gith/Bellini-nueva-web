@@ -496,7 +496,8 @@ export default function App() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 0.85 }}
                 transition={{ delay: 0.6, duration: 1.2 }}
-                className="text-center text-[13.5px] font-serif italic text-[#ece8e1]/80 leading-relaxed max-w-xs px-2"
+                className="text-center text-[20px] md:text-[13.5px] font-serif font-light italic text-[#ece8e1]/85 leading-snug md:leading-relaxed max-w-xs px-2 tracking-tighter md:tracking-normal"
+                style={{ fontWeight: 300 }}
               >
                 Donde la precisión de la ciencia<br />
                 se funde con el arte de su sonrisa.
@@ -505,8 +506,8 @@ export default function App() {
 
             {/* Bottom sliding finger gesture graphic */}
             <div className="relative z-10 flex flex-col items-center gap-1">
-              <span className="text-[10px] uppercase tracking-[0.3em] text-[#A3A6AC] font-light text-center">
-                Deslizar para comenzar
+              <span className="text-[9.5px] uppercase tracking-[0.25em] text-[#A3A6AC] font-light text-center leading-normal">
+                Deslizar para<br />comenzar
               </span>
               
               {/* Animated Scroll Capsule with moving dot */}
