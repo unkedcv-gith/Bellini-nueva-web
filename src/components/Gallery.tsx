@@ -138,9 +138,9 @@ export function Gallery() {
   return (
     <section 
       id="casos" 
-      className="w-full h-full relative px-4 md:px-12 lg:px-16 pt-24 sm:pt-32 md:pt-[18vh] lg:pt-[15vh] pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
+      className="w-full min-h-full md:h-full relative px-4 md:px-12 lg:px-16 pt-24 sm:pt-32 md:pt-[18vh] lg:pt-[15vh] pb-4 md:pb-5 flex flex-col justify-between bg-[#0a0a0a] text-bellini-primary overflow-hidden select-text"
     >
-      <div className="max-w-7xl mx-auto w-full flex flex-col h-full justify-between z-10 min-h-0 select-text overflow-y-auto lg:overflow-visible custom-scrollbar py-2">
+      <div className="max-w-7xl mx-auto w-full flex flex-col min-h-full md:h-full justify-between z-10 min-h-0 select-text overflow-visible md:overflow-y-auto lg:overflow-visible custom-scrollbar py-2">
         
         {/* Concise Editorial Title */}
         <div className="flex flex-col md:flex-row justify-between md:items-end gap-3 border-b border-[#222]/30 pb-2.5 shrink-0">

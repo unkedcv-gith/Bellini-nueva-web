@@ -4,8 +4,8 @@ import { Lock, MapPin, Phone } from 'lucide-react';
 
 export function Contact() {
   return (
-    <section className="w-full h-full relative px-6 md:px-16 lg:px-24 pt-20 sm:pt-28 md:pt-32 pb-16 md:pb-20 flex flex-col justify-center bg-[#0a0a0a] text-bellini-primary overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full flex flex-col justify-between h-full max-h-[85vh] lg:max-h-none overflow-y-auto lg:overflow-visible py-4 custom-scrollbar">
+    <section className="w-full min-h-full md:h-full relative px-6 md:px-16 lg:px-24 pt-20 sm:pt-28 md:pt-32 pb-16 md:pb-20 flex flex-col justify-center bg-[#0a0a0a] text-bellini-primary overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full flex flex-col justify-between min-h-full md:h-full max-h-none md:max-h-[85vh] lg:max-h-none overflow-visible md:overflow-y-auto lg:overflow-visible py-4 custom-scrollbar">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           <div>

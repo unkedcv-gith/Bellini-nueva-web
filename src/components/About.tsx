@@ -69,7 +69,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
   const frameOffset = "-inset-4 md:-inset-6";
 
   return (
-    <section className="w-full h-full relative px-6 md:px-12 lg:px-24 pt-12 xs:pt-14 md:pt-[24vh] pb-4 md:pb-24 lg:pt-[26vh] lg:pb-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden selection:bg-bellini-primary/20">
+    <section className="w-full min-h-full md:h-full relative px-6 md:px-12 lg:px-24 pt-12 xs:pt-14 md:pt-[24vh] pb-4 md:pb-24 lg:pt-[26vh] lg:pb-24 flex flex-col justify-center bg-[#0a0a0a] overflow-hidden selection:bg-bellini-primary/20">
       
       {/* 1. GARGANTUAN INTERACTIVE BACKGROUND OUTLINE TYPOGRAPHY - TRANSITIONING LIVE */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0 flex items-center justify-center">
@@ -91,17 +91,8 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
         </AnimatePresence>
       </div>
 
-      {/* 2. DYNAMIC SHIFTING HAIRLINE (FILETE DE SECCIÓN ELEGANTE) */}
-      <div className="absolute top-28 left-0 right-0 h-[1.5px] bg-[#ebdcae]/5 pointer-events-none z-10">
-        <motion.div 
-          className="h-full bg-gradient-to-r from-transparent via-[#ebdcae]/50 to-transparent w-48 md:w-80"
-          animate={{ x: `${currentIndex * 33.3}%` }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        />
-      </div>
-
       {/* Main asymmetric grid layout */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-24 items-center relative z-10 overflow-y-auto lg:overflow-visible max-h-[82vh] lg:max-h-none py-2 custom-scrollbar pr-1">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-24 items-center relative z-10 overflow-visible md:overflow-y-auto lg:overflow-visible max-h-none md:max-h-[82vh] lg:max-h-none py-2 custom-scrollbar pr-1">
         
         {/* Left Column: highly-styled framing compositions that shift structurally */}
         <div className="col-span-1 lg:col-span-6 flex items-center justify-center relative min-h-0 md:min-h-[520px]">

@@ -406,22 +406,22 @@ export default function App() {
       <div
         ref={containerRef}
         id="main-scroll-container"
-        className="flex flex-col md:flex-row flex-nowrap overflow-y-auto md:overflow-y-hidden overflow-x-hidden md:overflow-x-auto h-full w-full snap-y md:snap-x snap-mandatory relative z-10 select-none scrollbar-none"
+        className="flex flex-col md:flex-row flex-nowrap overflow-y-auto md:overflow-y-hidden overflow-x-hidden md:overflow-x-auto h-full w-full md:snap-x md:snap-mandatory relative z-10 select-none scrollbar-none scroll-smooth"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div id="hero" className="w-screen h-full flex-shrink-0 snap-start">
+        <div id="hero" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
           <Hero activeSubSlide={heroSubSlide} onSubSlideChange={setHeroSubSlide} />
         </div>
-        <div id="nosotros" className="w-screen h-full flex-shrink-0 snap-start">
+        <div id="nosotros" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
           <About activeSubSlide={aboutSubSlide} onSubSlideChange={setAboutSubSlide} />
         </div>
-        <div id="casos" className="w-screen h-full flex-shrink-0 snap-start">
+        <div id="casos" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
           <Gallery />
         </div>
-        <div id="servicios" className="w-screen h-full flex-shrink-0 snap-start">
+        <div id="servicios" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
           <Services activeSubSlide={servicesSubSlide} onSubSlideChange={setServicesSubSlide} />
         </div>
-        <div id="contacto" className="w-screen h-full flex-shrink-0 snap-start">
+        <div id="contacto" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
           <Contact />
         </div>
       </div>
