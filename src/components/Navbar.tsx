@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavbarProps {
@@ -8,6 +8,32 @@ interface NavbarProps {
 export function Navbar({ activeSection = 'hero' }: NavbarProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isOpenMobile, setIsOpenMobile] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const container = document.getElementById('main-scroll-container');
+    if (!container) return;
+
+    const handleScroll = () => {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        setHasScrolled(container.scrollTop > 15);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+
+    // Initial check
+    handleScroll();
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
 
   const navLinks = [
     { name: 'Inicio', href: '#/', targetId: 'hero' },
@@ -46,6 +72,17 @@ export function Navbar({ activeSection = 'hero' }: NavbarProps) {
 
   return (
     <>
+      {/* Mobile Top Header Backdrop Gradient with Blur */}
+      <div 
+        className={`md:hidden fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent backdrop-blur-[5px] pointer-events-none z-40 transition-all duration-500 ease-out ${
+          hasScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+        }`} 
+        style={{
+          maskImage: 'linear-gradient(to bottom, black 0%, rgba(0,0,0,0.9) 65%, rgba(0,0,0,0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, rgba(0,0,0,0.9) 65%, rgba(0,0,0,0) 100%)'
+        }}
+      />
+
       <div className="fixed top-8 left-6 md:top-12 md:left-12 z-50">
         {/* LOGO */}
         <a 
