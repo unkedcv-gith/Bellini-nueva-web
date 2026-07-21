@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import img10 from '../assets/images/bellini_imagen_10_1.jpeg';
+import img10 from '../assets/images/bellini_slideok.png';
 import img11 from '../assets/images/bellini_imagen_11_1.jpeg';
 import img12 from '../assets/images/bellini_imagen_12_1.jpeg';
 

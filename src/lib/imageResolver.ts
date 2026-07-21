@@ -1,5 +1,6 @@
 import img1 from '../assets/images/bellini_imagen_1_1.jpeg';
 import img2 from '../assets/images/bellini_imagen_2_1.jpeg';
+import img_slideok from '../assets/images/bellini_slideok.png';
 import img3 from '../assets/images/bellini_imagen_3.jpeg';
 import img4 from '../assets/images/bellini_imagen_4.jpeg';
 import img5 from '../assets/images/bellini_imagen_5.jpeg';
@@ -18,6 +19,7 @@ const imageMap: Record<string, string> = {
   // Direct mappings to the clean, uploaded files
   'bellini_imagen_1_1.jpeg': img1,
   'bellini_imagen_2_1.jpeg': img2,
+  'bellini_slideok.png': img_slideok,
   'bellini_imagen_3.jpeg': img3,
   'bellini_imagen_4.jpeg': img4,
   'bellini_imagen_5.jpeg': img5,

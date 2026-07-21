@@ -64,75 +64,80 @@ export function Navbar({ activeSection = 'hero' }: NavbarProps) {
 
       {/* Floating Dynamic Menu - Desktop */}
       <div className="hidden md:flex fixed top-12 right-12 z-50 justify-end flex-row-reverse">
-        <motion.div
-          onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
-          className="relative flex items-center h-12 bg-[#121212]/85 backdrop-blur-xl border border-white/10 rounded-full px-2 overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8)] cursor-pointer"
-          style={{ originX: 1 }}
-          animate={{
-            width: isHovered ? 'auto' : '160px',
-            paddingLeft: isHovered ? '24px' : '16px',
-            paddingRight: isHovered ? '24px' : '16px',
-          }}
-          transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
-        >
-          <AnimatePresence mode="popLayout">
-            {!isHovered ? (
-              <motion.div
-                key="collapsed"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="flex items-center gap-3 w-full justify-center"
-              >
-                <motion.div 
-                  className="w-1.5 h-1.5 rounded-full bg-bellini-primary"
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <span className="text-[9px] uppercase tracking-[0.2em] text-bellini-bone font-medium">
-                  {currentLink.name}
-                </span>
-                <span className="absolute right-4 text-[#A3A6AC]/50 text-[10px]">
-                  +
-                </span>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="expanded"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-                className="flex items-center gap-8 whitespace-nowrap pl-2 pr-2"
-              >
-                {navLinks.map((link) => {
-                  const isActive = activeSection === link.targetId;
-                  return (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.targetId)}
-                      className={`relative py-1 text-[9px] uppercase font-medium tracking-[0.2em] transition-colors duration-500 flex flex-col items-center gap-1 ${
-                        isActive ? 'text-bellini-bone' : 'text-[#A3A6AC]/40 hover:text-bellini-bone'
-                      }`}
-                    >
-                      {link.name}
-                      {isActive && (
-                        <motion.div 
-                          layoutId="activeDot" 
-                          className="absolute -bottom-1 w-[3px] h-[3px] rounded-full bg-bellini-primary"
-                          transition={{ type: 'spring', damping: 20, stiffness: 120 }}
-                        />
-                      )}
-                    </a>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+        {(() => {
+          const isExpanded = isHovered || activeSection !== 'hero';
+          return (
+            <motion.div
+              onHoverStart={() => setIsHovered(true)}
+              onHoverEnd={() => setIsHovered(false)}
+              className="relative flex items-center h-12 bg-[#121212]/85 backdrop-blur-xl border border-white/10 rounded-full px-2 overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.8)] cursor-pointer"
+              style={{ originX: 1 }}
+              animate={{
+                width: isExpanded ? 'auto' : '160px',
+                paddingLeft: isExpanded ? '24px' : '16px',
+                paddingRight: isExpanded ? '24px' : '16px',
+              }}
+              transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
+            >
+              <AnimatePresence mode="popLayout">
+                {!isExpanded ? (
+                  <motion.div
+                    key="collapsed"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex items-center gap-3 w-full justify-center"
+                  >
+                    <motion.div 
+                      className="w-1.5 h-1.5 rounded-full bg-bellini-primary"
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-bellini-bone font-medium">
+                      {currentLink.name}
+                    </span>
+                    <span className="absolute right-4 text-[#A3A6AC]/50 text-[10px]">
+                      +
+                    </span>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="expanded"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                    className="flex items-center gap-8 whitespace-nowrap pl-2 pr-2"
+                  >
+                    {navLinks.map((link) => {
+                      const isActive = activeSection === link.targetId;
+                      return (
+                        <a
+                          key={link.name}
+                          href={link.href}
+                          onClick={(e) => handleNavClick(e, link.targetId)}
+                          className={`relative py-1 text-[9px] uppercase font-medium tracking-[0.2em] transition-colors duration-500 flex flex-col items-center gap-1 ${
+                            isActive ? 'text-bellini-bone' : 'text-[#A3A6AC]/40 hover:text-bellini-bone'
+                          }`}
+                        >
+                          {link.name}
+                          {isActive && (
+                            <motion.div 
+                              layoutId="activeDot" 
+                              className="absolute -bottom-1 w-[3px] h-[3px] rounded-full bg-bellini-primary"
+                              transition={{ type: 'spring', damping: 20, stiffness: 120 }}
+                            />
+                          )}
+                        </a>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })()}
       </div>
 
       {/* Mobile Menu Button - Top Right */}
