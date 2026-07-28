@@ -16,6 +16,7 @@ import { About } from './components/About';
 import { Services } from './components/Services';
 import { Gallery } from './components/Gallery';
 import { Contact } from './components/Contact';
+import { Courses } from './components/Courses';
 import { AdminPanel } from './components/AdminPanel';
 
 
@@ -154,7 +155,7 @@ export default function App() {
     };
   }, [activeSection]);
 
-  const sections = ['hero', 'nosotros', 'casos', 'servicios', 'contacto'];
+  const sections = ['hero', 'nosotros', 'casos', 'servicios', 'cursos', 'contacto'];
 
   useEffect(() => {
     const handleNavScroll = (e: Event) => {
@@ -351,12 +352,15 @@ export default function App() {
         if (scrollHeight > 0) {
           setScrollProgress((container.scrollTop / scrollHeight) * 100);
         }
-        const viewportHeight = container.clientHeight || window.innerHeight || 1;
-        const rawIndex = Math.round(container.scrollTop / viewportHeight);
-        const currentIndex = isNaN(rawIndex) ? 0 : Math.max(0, Math.min(rawIndex, sections.length - 1));
-        if (sections[currentIndex]) {
-          setActiveSection(sections[currentIndex]);
+        const currentScrollTop = container.scrollTop;
+        let currentActive = sections[0];
+        for (const secId of sections) {
+          const el = document.getElementById(secId);
+          if (el && currentScrollTop >= el.offsetTop - container.clientHeight / 2) {
+            currentActive = secId;
+          }
         }
+        setActiveSection(currentActive);
       } else {
         const scrollWidth = container.scrollWidth - container.clientWidth;
         if (scrollWidth > 0) {
@@ -420,6 +424,9 @@ export default function App() {
         </div>
         <div id="servicios" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
           <Services activeSubSlide={servicesSubSlide} onSubSlideChange={setServicesSubSlide} />
+        </div>
+        <div id="cursos" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
+          <Courses />
         </div>
         <div id="contacto" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
           <Contact />

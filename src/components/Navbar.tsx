@@ -40,6 +40,7 @@ export function Navbar({ activeSection = 'hero' }: NavbarProps) {
     { name: 'Estudio', href: '#/', targetId: 'nosotros' },
     { name: 'Casos', href: '#/', targetId: 'casos' },
     { name: 'Clínica', href: '#/', targetId: 'servicios' },
+    { name: 'Cursos', href: '#/', targetId: 'cursos' },
     { name: 'Consulta', href: '#/', targetId: 'contacto' },
   ];
 
@@ -47,20 +48,21 @@ export function Navbar({ activeSection = 'hero' }: NavbarProps) {
     e.preventDefault();
     setIsOpenMobile(false);
     const container = document.getElementById('main-scroll-container');
-    if (container) {
-      const sections = ['hero', 'nosotros', 'casos', 'servicios', 'contacto'];
+    const targetElem = document.getElementById(targetId);
+    if (container && targetElem) {
+      const sections = ['hero', 'nosotros', 'casos', 'servicios', 'cursos', 'contacto'];
       const index = sections.indexOf(targetId);
       if (index !== -1) {
         window.dispatchEvent(new CustomEvent('nav-scroll-start', { detail: { targetIndex: index } }));
         const isMobile = window.innerWidth < 768;
         if (isMobile) {
           container.scrollTo({
-            top: index * container.clientHeight,
+            top: targetElem.offsetTop,
             behavior: 'smooth'
           });
         } else {
           container.scrollTo({
-            left: index * container.clientWidth,
+            left: targetElem.offsetLeft,
             behavior: 'smooth'
           });
         }

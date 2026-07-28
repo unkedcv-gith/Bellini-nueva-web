@@ -1,0 +1,258 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset='utf-8'>
+<title>Contenido Completo Web - BELLINI Estética Dental</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    padding: 40px;
+    background-color: #ffffff;
+  }
+  h1 {
+    font-family: 'Georgia', serif;
+    font-size: 26pt;
+    color: #0a0a0a;
+    border-bottom: 2px solid #c5a059;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .doc-subtitle {
+    font-size: 11pt;
+    color: #666666;
+    font-family: Arial, sans-serif;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  h2 {
+    font-family: 'Georgia', serif;
+    font-size: 16pt;
+    color: #c5a059;
+    background-color: #0a0a0a;
+    padding: 8px 14px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+  h3 {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    color: #222222;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border-left: 3px solid #c5a059;
+    padding-left: 10px;
+  }
+  p, li {
+    font-size: 11pt;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  .label {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 10pt;
+    color: #555555;
+    text-transform: uppercase;
+  }
+  .box {
+    background-color: #f9f8f6;
+    border: 1px solid #e5e0d8;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+  th, td {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    text-align: left;
+    font-size: 10.5pt;
+  }
+  th {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+  <h1>BELLINI ESTÉTICA DENTAL</h1>
+  <div class="doc-subtitle">Documento de Revisión de Textos y Contenido Web Completo</div>
+
+  <div class="box">
+    <p><strong>Instrucciones:</strong> Este documento contiene la totalidad de los textos, títulos, descripciones y copys actualmente publicados en el sitio web de <strong>BELLINI Estética Dental</strong>. Utilice este archivo para realizar las correcciones, ajustes o cambios que desee requerir.</p>
+  </div>
+
+  <!-- SECCIÓN 01: NAVEGACIÓN -->
+  <h2>01. NAVEGACIÓN PRINCIPAL (NAVBAR & CABECERA)</h2>
+  <p><span class="label">Nombre de Marca:</span> BELLINI ESTÉTICA DENTAL</p>
+  <p><span class="label">Menú de Opciones:</span></p>
+  <ul>
+    <li>01. Portada</li>
+    <li>02. Estudio</li>
+    <li>03. Servicios</li>
+    <li>04. Casos</li>
+    <li>05. Cursos</li>
+    <li>06. Contacto</li>
+  </ul>
+  <p><span class="label">Botón de Acción Principal:</span> Agendar Cita</p>
+
+
+  <!-- SECCIÓN 02: HERO / PORTADA -->
+  <h2>02. PORTADA (HERO SLIDER)</h2>
+  <p><span class="label">Subtítulo General:</span> Estudio de Odontología</p>
+  <p><span class="label">Titulares Diapositiva 1:</span> "Odontología de precisión estética."</p>
+  <p><span class="label">Titulares Diapositiva 2:</span> "La sutileza de una armonía invisible."</p>
+  <p><span class="label">Titulares Diapositiva 3:</span> "Su bienestar comienza con la calma."</p>
+  <p><span class="label">Micro-indicador de Scroll:</span> "Scroll para recorrer"</p>
+
+
+  <!-- SECCIÓN 03: NOSOTROS / FILOSOFÍA -->
+  <h2>03. NUESTRO ESTUDIO (FILOSOFÍA)</h2>
+  <p><span class="label">Categoría:</span> — FILOSOFÍA ODONTOLÓGICA</p>
+  <p><span class="label">Título Principal:</span> El valor supremo de la sutileza.</p>
+  
+  <h3>Pilar 01: ESTÉTICA</h3>
+  <ul>
+    <li><strong>Subtítulo:</strong> 01 / EQUILIBRIO FACIAL</li>
+    <li><strong>Mini Título:</strong> DISEÑO & PROPORCIÓN ÁUREA</li>
+    <li><strong>Descripción:</strong> Diseño de sonrisas naturales bajo cánones de proporción áurea y armonía facial.</li>
+    <li><strong>Destacado:</strong> Proporciones biológicas</li>
+  </ul>
+
+  <h3>Pilar 02: PRECISIÓN</h3>
+  <ul>
+    <li><strong>Subtítulo:</strong> 02 / ALTA INGENIERÍA</li>
+    <li><strong>Mini Título:</strong> MICRO-ODONTOLOGÍA DE PRECISIÓN</li>
+    <li><strong>Descripción:</strong> Microscopia clínica y tecnología digital para lograr un ajuste micrométrico y duradero.</li>
+    <li><strong>Destacado:</strong> Resolución micrométrica</li>
+  </ul>
+
+  <h3>Pilar 03: CALMA</h3>
+  <ul>
+    <li><strong>Subtítulo:</strong> 03 / SILENCIO SENSORIAL</li>
+    <li><strong>Mini Título:</strong> BIENESTAR INTANGIBLE</li>
+    <li><strong>Descripción:</strong> Espacios de silencio acústico y confort diseñados para una experiencia de paz absoluta.</li>
+    <li><strong>Destacado:</strong> Atención monocromática</li>
+  </ul>
+
+
+  <!-- SECCIÓN 04: SERVICIOS -->
+  <h2>04. TRATAMIENTOS & SERVICIOS DE EXCELENCIA</h2>
+  <p><span class="label">Concepto Central:</span> EXCELENCIA</p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Nº</th>
+        <th>Especialidad</th>
+        <th>Subtítulo</th>
+        <th>Descripción del Tratamiento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01</td>
+        <td>Estética</td>
+        <td>Dental</td>
+        <td>Carillas cerámicas ultrafinas, blanqueamiento de alta precisión y escultura dental personalizada.</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>Rehabilitación</td>
+        <td>Oral</td>
+        <td>Prótesis de alta durabilidad y restauración dental guiada digitalmente.</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>Implantes</td>
+        <td>3D</td>
+        <td>Cirugía guiada mínimamente invasiva con carga inmediata de alta predictibilidad.</td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>Diseño</td>
+        <td>Digital</td>
+        <td>Planificación 3D y mockup personalizado para previsualizar su sonrisa ideal.</td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td>Ortodoncia</td>
+        <td>Invisible</td>
+        <td>Alineadores transparentes secuenciados mediante ortodoncia digital avanzada.</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- SECCIÓN 05: GABINETE CLÍNICO (CASOS) -->
+  <h2>05. GABINETE CLÍNICO (CASOS REALES / ANTES Y DESPUÉS)</h2>
+  <p><span class="label">Categoría:</span> Gabinete Clínico / Casos Reales</p>
+  <p><span class="label">Título de Caso 01:</span> Restauración Estética</p>
+  <p><span class="label">Descripción General:</span> Restauración biomimética mediante microcarillas cerámicas sin tallado de esmalte.</p>
+  <p><span class="label">Diagnóstico e Diagnóstico Inicial (Antes):</span> Desgaste severo erosivo incisal, desmineralización cervical y diastemas dispersos.</p>
+  <p><span class="label">Tratamiento Realizado (Después):</span> Adición mínimamente invasiva con microcarillas de porcelana refractaria artesanal (0.3mm).</p>
+  <p><span class="label">Botón de Consulta:</span> Consultar Caso (Abre WhatsApp con consulta directa)</p>
+
+
+  <!-- SECCIÓN 06: ACADEMIA BELLINI (CURSOS) -->
+  <h2>06. ACADEMIA BELLINI (MASTERCLASSES Y FORMACIÓN)</h2>
+  <p><span class="label">Estado de Cursos:</span> PRÓXIMAMENTE</p>
+  <p><span class="label">Nombre de Marca:</span> Academia BELLINI</p>
+  <p><span class="label">Subtítulo:</span> Formación continua para odontólogos</p>
+  <p><span class="label">Descripción Educativa:</span> Capacitación de posgrado y masterclasses enfocadas en la excelencia clínica, estética dental avanzada y odontología digital guiada.</p>
+  <p><span class="label">Botón Principal:</span> Unirme a la lista de espera</p>
+  
+  <h3>Formulario de Registro / Lista de Espera:</h3>
+  <ul>
+    <li>Campo 1: Nombre y Apellido *</li>
+    <li>Campo 2: Correo Electrónico *</li>
+    <li>Campo 3: Especialidad / Matrícula</li>
+    <li>Campo 4: Consulta adicional</li>
+    <li>Botón Enviar: Confirmar Registro</li>
+  </ul>
+
+
+  <!-- SECCIÓN 07: CONTACTO Y UBICACIÓN -->
+  <h2>07. CONTACTO Y UBICACIÓN</h2>
+  <p><span class="label">Título de Sección:</span> Contactar al Estudio</p>
+  <p><span class="label">Subtítulo:</span> Agende su consulta personalizada o comuníquese directamente con nuestro equipo.</p>
+
+  <h3>Información Directa de Contacto:</h3>
+  <ul>
+    <li><strong>Teléfono / WhatsApp Directo:</strong> +54 9 11 1234-5678</li>
+    <li><strong>Dirección / Estudio:</strong> Av. Alvear 1850, Recoleta, Buenos Aires, Argentina</li>
+    <li><strong>Correo Electrónico:</strong> contacto@belliniodontologia.com</li>
+    <li><strong>Horarios de Atención:</strong> Lunes a Viernes: 09:00 - 19:00 hs</li>
+  </ul>
+
+
+  <!-- SECCIÓN 08: PIE DE PÁGINA -->
+  <h2>08. PIE DE PÁGINA (FOOTER)</h2>
+  <p>BELLINI Estética Dental © Todos los derechos reservados.</p>
+  <p>Atención privada con cita previa para garantizar la máxima reserva y dedicación exclusiva a cada paciente.</p>
+
+</body>
+</html>
