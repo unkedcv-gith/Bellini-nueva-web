@@ -92,7 +92,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
       </div>
 
       {/* Main asymmetric grid layout */}
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-24 items-center relative z-10 overflow-visible md:overflow-y-auto lg:overflow-visible max-h-none md:max-h-[82vh] lg:max-h-none py-2 custom-scrollbar pr-1">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-24 items-center relative z-10 overflow-visible py-2 pr-1">
         
         {/* Left Column: highly-styled framing compositions that shift structurally */}
         <div className="col-span-1 lg:col-span-6 flex items-center justify-center relative min-h-0 md:min-h-[520px]">
@@ -112,7 +112,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
             />
             
             {/* Main Image Container */}
-            <div className="w-full h-full rounded-2xl overflow-hidden border border-white/5 relative bg-black/40 z-10 group shadow-[0_30px_70px_-15px_rgba(0,0,0,0.9)]">
+            <div className="w-full h-full rounded-2xl overflow-hidden border border-white/5 relative bg-black/40 z-10 group shadow-[0_30px_70px_-15px_rgba(0,0,0,0.9)] active:grayscale-0">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={current.id + '-main-img'}
@@ -122,7 +122,7 @@ export function About({ activeSubSlide, onSubSlideChange }: AboutProps) {
                   animate={{ opacity: 0.8, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full h-full object-cover select-none pointer-events-none transition-[filter,opacity,transform] duration-[1000ms] ease-out filter grayscale brightness-[0.85] group-hover:grayscale-0 group-hover:brightness-[1.15] group-hover:opacity-100 group-hover:scale-[1.03]"
+                  className="w-full h-full object-cover select-none pointer-events-none transition-[filter,opacity,transform] duration-[1000ms] ease-out filter grayscale brightness-[0.85] group-hover:grayscale-0 group-hover:brightness-[1.15] group-hover:opacity-100 group-hover:scale-[1.03] group-active:grayscale-0 group-active:brightness-[1.15] group-active:opacity-100"
                 />
               </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-transparent to-[#0a0a0a]/30"></div>

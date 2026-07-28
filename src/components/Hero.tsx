@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import img10 from '../assets/images/bellini_slideok.png';
 import img11 from '../assets/images/bellini_imagen_11_1.jpeg';
@@ -32,12 +32,31 @@ export function Hero({ activeSubSlide = 0, onSubSlideChange }: HeroProps) {
   const direction = 1; // Constant direction so all slides consistently flow from right to left
 
   const [isHovering, setIsHovering] = useState(false);
+  const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleTouchStart = () => {
+    if (touchTimeoutRef.current) clearTimeout(touchTimeoutRef.current);
+    setIsHovering(true);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchTimeoutRef.current) clearTimeout(touchTimeoutRef.current);
+    touchTimeoutRef.current = setTimeout(() => {
+      setIsHovering(false);
+    }, 1800);
+  };
 
   return (
     <section 
       className="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#0a0a0a]"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
+      onPointerDown={handleTouchStart}
+      onPointerUp={handleTouchEnd}
     >
       {/* Background Image Slider with Real Scroll-Slide Effect */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#0a0a0a]">
@@ -74,11 +93,11 @@ export function Hero({ activeSubSlide = 0, onSubSlideChange }: HeroProps) {
               className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125 select-none opacity-45"
             />
             
-            {/* Color Overlay (Shows completely on hover) */}
+            {/* Color Overlay (Shows completely on hover and touch) */}
             <img 
               src={slideData[currentSlide]?.img || img10} 
               alt="Color View" 
-              className="absolute inset-0 w-full h-full object-cover select-none transition-opacity duration-[1500ms] ease-out"
+              className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none transition-opacity duration-[1000ms] ease-out"
               style={{
                 opacity: isHovering ? 1 : 0,
               }}

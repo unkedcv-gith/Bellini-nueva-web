@@ -410,25 +410,25 @@ export default function App() {
       <div
         ref={containerRef}
         id="main-scroll-container"
-        className="flex flex-col md:flex-row flex-nowrap overflow-y-auto md:overflow-y-hidden overflow-x-hidden md:overflow-x-auto h-full w-full md:snap-x md:snap-mandatory relative z-10 select-none scrollbar-none scroll-smooth"
+        className="flex flex-col md:flex-row flex-nowrap overflow-y-auto md:overflow-y-hidden overflow-x-hidden md:overflow-x-auto h-full w-full snap-y snap-mandatory md:snap-x md:snap-mandatory relative z-10 select-none scrollbar-none scroll-smooth"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div id="hero" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
+        <div id="hero" className="w-screen h-full min-h-screen md:h-full flex-shrink-0 snap-start snap-always">
           <Hero activeSubSlide={heroSubSlide} onSubSlideChange={setHeroSubSlide} />
         </div>
-        <div id="nosotros" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
+        <div id="nosotros" className="w-screen h-full min-h-screen md:h-full flex-shrink-0 snap-start snap-always">
           <About activeSubSlide={aboutSubSlide} onSubSlideChange={setAboutSubSlide} />
         </div>
-        <div id="casos" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
+        <div id="casos" className="w-screen h-full min-h-screen md:h-full flex-shrink-0 snap-start snap-always">
           <Gallery />
         </div>
-        <div id="servicios" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
+        <div id="servicios" className="w-screen h-full min-h-screen md:h-full flex-shrink-0 snap-start snap-always">
           <Services activeSubSlide={servicesSubSlide} onSubSlideChange={setServicesSubSlide} />
         </div>
-        <div id="cursos" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
+        <div id="cursos" className="w-screen h-full min-h-screen md:h-full flex-shrink-0 snap-start snap-always">
           <Courses />
         </div>
-        <div id="contacto" className="w-screen min-h-full md:h-full flex-shrink-0 md:snap-start">
+        <div id="contacto" className="w-screen h-full min-h-screen md:h-full flex-shrink-0 snap-start snap-always">
           <Contact />
         </div>
       </div>

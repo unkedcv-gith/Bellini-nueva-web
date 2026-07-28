@@ -38,7 +38,7 @@ export function Services({ activeSubSlide, onSubSlideChange }: ServicesProps) {
       <Watermark text="EXCELENCIA" className="top-1/3 left-10 opacity-10" />
 
       {/* Main Content Box with fine borders */}
-      <div className="w-full max-w-[1280px] border border-white/5 relative flex flex-col md:flex-row bg-[#0a0a0a]/50 backdrop-blur-sm shadow-2xl z-10 mt-12 md:mt-0 overflow-visible md:overflow-y-auto md:overflow-visible max-h-none md:max-h-[75vh] custom-scrollbar">
+      <div className="w-full max-w-[1280px] border border-white/5 relative flex flex-col md:flex-row bg-[#0a0a0a]/50 backdrop-blur-sm shadow-2xl z-10 mt-12 md:mt-0 overflow-hidden rounded-xl">
         
         {/* Exquisite corner markings (filetes) */}
         <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t border-l border-bellini-primary" />
