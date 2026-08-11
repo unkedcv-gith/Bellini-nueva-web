@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main # Trigger deployment on main branch commits
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 jobs:
   build-and-deploy:
@@ -26,7 +27,7 @@ jobs:
       - name: Build Project
         run: npm run build
         env:
-          # Si tienes variables de entorno públicas (que empiezan con VITE_) puedes agregarlas aquí
+          VITE_WHATSAPP_NUMBER: ${{ secrets.VITE_WHATSAPP_NUMBER }}
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
           VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
           VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
