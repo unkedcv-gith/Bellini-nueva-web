@@ -18,6 +18,7 @@ import { Gallery } from './components/Gallery';
 import { Contact } from './components/Contact';
 import { Courses } from './components/Courses';
 import { AdminPanel } from './components/AdminPanel';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 
 export default function App() {
@@ -405,6 +406,9 @@ export default function App() {
 
       {/* Modern Top Luxury Navbar */}
       <Navbar activeSection={activeSection} />
+
+      {/* Floating Always Visible WhatsApp Action Button */}
+      <WhatsAppButton />
 
       {/* Main Snapping Container (Vertical on Mobile, Horizontal on Desktop) */}
       <div
