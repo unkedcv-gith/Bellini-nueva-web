@@ -118,7 +118,7 @@ export function Contact() {
           <div className="flex gap-6 pointer-events-auto">
             <a href="#" className="hover:text-white transition-colors">Instagram</a>
             <a 
-              href={`https://wa.me/${(import.meta.env.VITE_WHATSAPP_NUMBER || '5491140000000').replace(/[^0-9]/g, '')}?text=${encodeURIComponent("Hola! 👋 Quiero sacar un turno y necesito saber la disponibilidad de día y horario, gracias! ✨")}`} 
+              href={`https://wa.me/${(import.meta.env.VITE_WHATSAPP_NUMBER || '5492216105296').replace(/[^0-9]/g, '')}?text=${encodeURIComponent("Hola! 👋 Quiero sacar un turno y necesito saber la disponibilidad de día y horario, gracias! ✨")}`} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="hover:text-white transition-colors"

@@ -7,13 +7,19 @@ interface WhatsAppButtonProps {
 }
 
 export function WhatsAppButton({
-  phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '5491140000000',
+  phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '5492216105296',
   message = "Hola! 👋 Quiero sacar un turno y necesito saber la disponibilidad de día y horario, gracias! ✨"
 }: WhatsAppButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const encodedMessage = encodeURIComponent(message);
-  const cleanPhone = phoneNumber.replace(/[^0-9]/g, '');
+  const rawPhone = phoneNumber || import.meta.env.VITE_WHATSAPP_NUMBER || '5492216105296';
+  const digits = rawPhone.replace(/[^0-9]/g, '');
+  const cleanPhone = digits.startsWith('549') 
+    ? digits 
+    : digits.startsWith('54') 
+      ? '549' + digits.slice(2) 
+      : '549' + digits;
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
 
   return (
