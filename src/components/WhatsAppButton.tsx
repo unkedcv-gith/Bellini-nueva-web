@@ -9,7 +9,7 @@ interface WhatsAppButtonProps {
 
 export function WhatsAppButton({
   activeSection = 'hero',
-  phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '5492216105296'
+  phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '5492494573917'
 }: WhatsAppButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -29,7 +29,7 @@ export function WhatsAppButton({
     : "Consultar Turno";
 
   const encodedMessage = encodeURIComponent(message);
-  const rawPhone = phoneNumber || '5492216105296';
+  const rawPhone = phoneNumber || '5492494573917';
   const cleanPhone = cleanArgentinePhoneNumber(rawPhone);
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
 

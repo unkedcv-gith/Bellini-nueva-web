@@ -1,9 +1,9 @@
 /**
  * Cleans and formats Argentine phone numbers to the correct WhatsApp international format.
  * Correct format: 549 + area code (without leading 0) + subscriber number (without leading 15).
- * Example: +54 9 221 610-5296 -> 5492216105296
- * Example: +54 9 0221 15 610-5296 -> 5492216105296
- * Example: 0221 15-610-5296 -> 5492216105296
+ * Example: +54 9 2494 573917 -> 5492494573917
+ * Example: +54 9 0249 15 457-3917 -> 5492494573917
+ * Example: 02494 15-573917 -> 5492494573917
  */
 export function cleanArgentinePhoneNumber(phone: string): string {
   // 1. Keep only digits
@@ -27,6 +27,10 @@ export function cleanArgentinePhoneNumber(phone: string): string {
     // Remove '15' mobile indicator if present right after common area codes
     if (rest.startsWith('22115')) {
       rest = '221' + rest.slice(5);
+    } else if (rest.startsWith('249415')) {
+      rest = '2494' + rest.slice(6);
+    } else if (rest.startsWith('24915')) {
+      rest = '249' + rest.slice(5);
     } else if (rest.startsWith('1115')) {
       rest = '11' + rest.slice(4);
     } else if (rest.startsWith('34115')) {
@@ -52,6 +56,10 @@ export function cleanArgentinePhoneNumber(phone: string): string {
   // Remove '15' prefix or mobile indicator
   if (digits.startsWith('22115')) {
     digits = '221' + digits.slice(5);
+  } else if (digits.startsWith('249415')) {
+    digits = '2494' + digits.slice(6);
+  } else if (digits.startsWith('24915')) {
+    digits = '249' + digits.slice(5);
   } else if (digits.startsWith('1115')) {
     digits = '11' + digits.slice(4);
   } else if (digits.startsWith('34115')) {

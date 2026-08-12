@@ -6,7 +6,7 @@ import { cleanArgentinePhoneNumber } from '../lib/phone';
 import coursesBg from '../assets/images/cursos_bg_classroom_1784659978057.jpg';
 
 export function Courses() {
-  const rawPhone = import.meta.env.VITE_WHATSAPP_NUMBER || '5492216105296';
+  const rawPhone = import.meta.env.VITE_WHATSAPP_NUMBER || '5492494573917';
   const cleanPhone = cleanArgentinePhoneNumber(rawPhone);
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent("Hola! Quisiera unirme a la lista de espera para los próximos cursos de la Academia Bellini.")}`;
 
