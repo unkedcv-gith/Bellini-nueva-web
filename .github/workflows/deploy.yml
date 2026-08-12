@@ -44,5 +44,6 @@ jobs:
           local-dir: ./dist/
           # Al ser belliniodontologia.com.ar un dominio adicional en tu Hostinger,
           # su carpeta pública real está dentro de 'domains/belliniodontologia.com.ar/public_html/'
-          server-dir: ${{ secrets.FTP_SERVER_DIR || 'domains/belliniodontologia.com.ar/public_html/' }}
-          state-name: '.ftp-deploy-sync-public-html-bellini.json'
+          server-dir: domains/belliniodontologia.com.ar/public_html/
+          state-name: '.ftp-deploy-sync-bellini-domain-v1.json'
+          dangerous-clean-slate: false
