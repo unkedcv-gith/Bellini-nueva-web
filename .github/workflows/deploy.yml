@@ -43,6 +43,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: public_html/
-          protocol: sftp
-          port: 22
+          protocol: ftp
+          security: loose
           dangerous-clean-slate: false
