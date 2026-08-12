@@ -42,6 +42,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          # La carpeta pública principal en Hostinger es public_html/
-          server-dir: ${{ secrets.FTP_SERVER_DIR || 'public_html/' }}
-          dangerous-clean-slate: false # Cambia a true si quieres borrar archivos antiguos en el servidor que ya no estén en la build
+          server-dir: public_html/
+          protocol: sftp
+          port: 22
+          dangerous-clean-slate: false
