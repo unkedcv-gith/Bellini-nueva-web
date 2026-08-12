@@ -2,16 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { GraduationCap, Send, CheckCircle2, X } from 'lucide-react';
 import { Watermark } from './Watermark';
+import { cleanArgentinePhoneNumber } from '../lib/phone';
 import coursesBg from '../assets/images/cursos_bg_classroom_1784659978057.jpg';
 
 export function Courses() {
   const rawPhone = import.meta.env.VITE_WHATSAPP_NUMBER || '5492216105296';
-  const digits = rawPhone.replace(/[^0-9]/g, '');
-  const cleanPhone = digits.startsWith('549') 
-    ? digits 
-    : digits.startsWith('54') 
-      ? '549' + digits.slice(2) 
-      : '549' + digits;
+  const cleanPhone = cleanArgentinePhoneNumber(rawPhone);
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent("Hola! Quisiera unirme a la lista de espera para los próximos cursos de la Academia Bellini.")}`;
 
   const [isModalOpen, setIsModalOpen] = useState(false);

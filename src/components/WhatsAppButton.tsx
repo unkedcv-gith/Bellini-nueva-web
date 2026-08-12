@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { cleanArgentinePhoneNumber } from '../lib/phone';
 
 interface WhatsAppButtonProps {
   activeSection?: string;
@@ -29,12 +30,7 @@ export function WhatsAppButton({
 
   const encodedMessage = encodeURIComponent(message);
   const rawPhone = phoneNumber || '5492216105296';
-  const digits = rawPhone.replace(/[^0-9]/g, '');
-  const cleanPhone = digits.startsWith('549') 
-    ? digits 
-    : digits.startsWith('54') 
-      ? '549' + digits.slice(2) 
-      : '549' + digits;
+  const cleanPhone = cleanArgentinePhoneNumber(rawPhone);
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
 
   return (
