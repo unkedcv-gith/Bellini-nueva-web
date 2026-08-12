@@ -1,11 +1,10 @@
-# Deploy to Hostinger Custom Hosting - Configuration for Bellini
 name: Deploy to Custom Hosting
 
 on:
   push:
     branches:
-      - main # Trigger deployment on main branch commits
-  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+      - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -42,8 +41,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          # Al ser belliniodontologia.com.ar un dominio adicional en tu Hostinger,
-          # su carpeta pública real está dentro de 'domains/belliniodontologia.com.ar/public_html/'
           server-dir: domains/belliniodontologia.com.ar/public_html/
-          state-name: '.ftp-deploy-sync-bellini-domain-v2.json'
+          state-name: '.ftp-deploy-sync-bellini-domain-v5.json'
           dangerous-clean-slate: false
