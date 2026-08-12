@@ -42,5 +42,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: ${{ secrets.FTP_SERVER_DIR || 'public_html/' }}
-          state-name: '.ftp-deploy-sync-public-html.json'
+          # Al ser belliniodontologia.com.ar un dominio adicional en tu Hostinger,
+          # su carpeta pública real está dentro de 'domains/belliniodontologia.com.ar/public_html/'
+          server-dir: ${{ secrets.FTP_SERVER_DIR || 'domains/belliniodontologia.com.ar/public_html/' }}
+          state-name: '.ftp-deploy-sync-public-html-bellini.json'
