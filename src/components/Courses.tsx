@@ -5,6 +5,15 @@ import { Watermark } from './Watermark';
 import coursesBg from '../assets/images/cursos_bg_classroom_1784659978057.jpg';
 
 export function Courses() {
+  const rawPhone = import.meta.env.VITE_WHATSAPP_NUMBER || '5492216105296';
+  const digits = rawPhone.replace(/[^0-9]/g, '');
+  const cleanPhone = digits.startsWith('549') 
+    ? digits 
+    : digits.startsWith('54') 
+      ? '549' + digits.slice(2) 
+      : '549' + digits;
+  const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent("Hola! Quisiera unirme a la lista de espera para los próximos cursos de la Academia Bellini.")}`;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -80,13 +89,15 @@ export function Courses() {
 
         {/* 5. Button - Exact style match with 'Consultar caso' (Bone color #FAF7F0, semi-rounded pill, text #0a0a0a, hover white) */}
         <div className="flex justify-center w-full">
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="group text-[9px] sm:text-[10px] uppercase tracking-[0.2em] bg-[#FAF7F0] text-[#0a0a0a] border border-[#FAF7F0] px-7 py-3.5 rounded-full hover:bg-white hover:border-white transition-all duration-300 font-bold cursor-pointer whitespace-nowrap active:scale-95 flex items-center justify-center gap-2.5 shadow-xl"
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group text-[9px] sm:text-[10px] uppercase tracking-[0.2em] bg-[#FAF7F0] text-[#0a0a0a] border border-[#FAF7F0] px-7 py-3.5 rounded-full hover:bg-white hover:border-white transition-all duration-300 font-bold cursor-pointer whitespace-nowrap active:scale-95 inline-flex items-center justify-center gap-2.5 shadow-xl"
           >
             <GraduationCap className="w-3.5 h-3.5 text-[#0a0a0a] shrink-0 transition-transform duration-300 group-hover:scale-110" />
             <span className="whitespace-nowrap">Unirme a la lista de espera</span>
-          </button>
+          </a>
         </div>
 
       </div>

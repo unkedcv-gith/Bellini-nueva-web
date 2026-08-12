@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 // Force deployment update to: domains/belliniodontologia.com.ar/public_html/
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
@@ -25,6 +25,27 @@ import { WhatsAppButton } from './components/WhatsAppButton';
 export default function App() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(false);
+
+  // Lock screen and passcode logic for Bellini Odontología "Próximamente"
+  const [passcode, setPasscode] = useState('');
+  const [passcodeError, setPasscodeError] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(() => {
+    return localStorage.getItem('bellini_preview_auth') === 'true';
+  });
+
+  const handlePasscodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.slice(0, 4);
+    setPasscode(val);
+    setPasscodeError(false);
+    
+    if (val === '6666') {
+      localStorage.setItem('bellini_preview_auth', 'true');
+      setIsAuthorized(true);
+    } else if (val.length === 4) {
+      setPasscodeError(true);
+      setTimeout(() => setPasscode(''), 1000);
+    }
+  };
 
   useEffect(() => {
     // Only show the splash screen on mobile viewports (< 768px)
@@ -400,6 +421,94 @@ export default function App() {
     });
   };
 
+  if (!isAuthorized) {
+    return (
+      <div className="fixed inset-0 w-full h-full bg-[#0a0a0a] flex flex-col justify-center items-center px-4 overflow-hidden font-sans">
+        {/* Absolute Noise Overlay */}
+        <div className="fixed inset-0 bg-noise z-0 pointer-events-none opacity-30"></div>
+        
+        {/* Absolute subtle gold/warm radial glow in the background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,156,93,0.04)_0%,transparent_70%)] pointer-events-none" />
+
+        <div className="max-w-md w-full text-center relative z-10 flex flex-col items-center">
+          {/* Logo with fade-in from translucent to gold */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="flex flex-col items-center mb-10"
+          >
+            <span 
+              className="text-4xl sm:text-5xl tracking-[0.25em] font-serif uppercase text-[#FAF7F0]"
+              style={{ transform: 'translateX(0.125em)' }}
+            >
+              Bellini
+            </span>
+            <span 
+              className="text-[10px] tracking-[0.45em] font-sans uppercase text-[#FAF7F0]/80 mt-2"
+              style={{ transform: 'translateX(0.225em)' }}
+            >
+              Odontología
+            </span>
+          </motion.div>
+
+          {/* Under Construction text and subtitle */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="space-y-4"
+          >
+            <span className="text-[10px] tracking-[0.3em] text-[#B89C5D] uppercase font-bold">
+              Próximamente
+            </span>
+            <h2 className="text-xl sm:text-2xl font-serif text-[#FAF7F0] font-light px-4 leading-relaxed">
+              Estamos diseñando una nueva experiencia digital de vanguardia.
+            </h2>
+            <p className="text-xs text-[#8C8275] max-w-sm mx-auto leading-relaxed px-4">
+              Pronto podrás conocer nuestra clínica, tratamientos premium y los nuevos cursos de la Academia.
+            </p>
+          </motion.div>
+
+          {/* Passcode input block */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 1 }}
+            className="mt-12 w-full max-w-[280px]"
+          >
+            <div className="relative">
+              <input
+                type="password"
+                value={passcode}
+                onChange={handlePasscodeChange}
+                placeholder="••••"
+                className={`w-full bg-[#141211] text-[#FAF7F0] border text-center text-xl tracking-[1em] pl-[1em] py-3.5 rounded-xl outline-none transition-all ${
+                  passcodeError 
+                    ? 'border-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.15)]' 
+                    : 'border-[#B89C5D]/20 focus:border-[#B89C5D]/60 focus:shadow-[0_0_20px_rgba(184,156,93,0.1)]'
+                }`}
+              />
+              {passcodeError && (
+                <p className="text-xs text-red-400 mt-2 font-medium">Código incorrecto</p>
+              )}
+              {!passcodeError && (
+                <p className="text-[10px] text-[#8C8275] tracking-widest uppercase mt-3">
+                  Ingresar código de acceso
+                </p>
+              )}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Footer copyright */}
+        <div className="absolute bottom-6 text-[10px] tracking-widest text-[#595248] uppercase relative z-10">
+          © {new Date().getFullYear()} Bellini Odontología. Todos los derechos reservados.
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 w-full h-full bg-[#0a0a0a] overflow-hidden font-sans">
       {/* Absolute Noise Overlay */}
@@ -409,7 +518,7 @@ export default function App() {
       <Navbar activeSection={activeSection} />
 
       {/* Floating Always Visible WhatsApp Action Button */}
-      <WhatsAppButton />
+      <WhatsAppButton activeSection={activeSection} />
 
       {/* Main Snapping Container (Vertical on Mobile, Horizontal on Desktop) */}
       <div
@@ -549,6 +658,19 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Discreet preview exit button */}
+      <button
+        onClick={() => {
+          localStorage.removeItem('bellini_preview_auth');
+          setIsAuthorized(false);
+          setPasscode('');
+        }}
+        className="fixed bottom-4 left-4 z-[90] text-[10px] text-[#8c8275]/40 hover:text-[#B89C5D] transition-colors bg-black/40 hover:bg-[#121110] px-2.5 py-1.5 rounded border border-[#E8E2D5]/5 uppercase tracking-widest pointer-events-auto"
+        title="Cerrar vista previa"
+      >
+        🔒 Cerrar Vista
+      </button>
     </div>
   );
 }
