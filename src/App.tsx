@@ -423,14 +423,17 @@ export default function App() {
 
   if (!isAuthorized) {
     return (
-      <div className="fixed inset-0 w-full h-full bg-[#0a0a0a] flex flex-col justify-center items-center px-4 overflow-hidden font-sans">
+      <div className="fixed inset-0 w-full h-full bg-[#0a0a0a] flex flex-col justify-between items-center px-4 py-10 overflow-y-auto font-sans">
         {/* Absolute Noise Overlay */}
         <div className="fixed inset-0 bg-noise z-0 pointer-events-none opacity-30"></div>
         
         {/* Absolute subtle gold/warm radial glow in the background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,156,93,0.04)_0%,transparent_70%)] pointer-events-none" />
 
-        <div className="max-w-md w-full text-center relative z-10 flex flex-col items-center">
+        {/* Invisible placeholder to align layout properly on high aspect-ratio viewports */}
+        <div className="h-2 sm:h-6 shrink-0 z-10 pointer-events-none"></div>
+
+        <div className="max-w-md w-full text-center relative z-10 flex flex-col items-center my-auto shrink-0 py-6">
           {/* Logo with fade-in from translucent to gold */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -459,10 +462,10 @@ export default function App() {
             transition={{ delay: 0.3, duration: 1 }}
             className="space-y-4"
           >
-            <span className="text-[10px] tracking-[0.3em] text-[#B89C5D] uppercase font-bold">
+            <span className="text-[11px] sm:text-xs tracking-[0.35em] text-[#B89C5D] uppercase font-bold block" style={{ transform: 'translateX(0.175em)' }}>
               Próximamente
             </span>
-            <h2 className="text-xl sm:text-2xl font-serif text-[#FAF7F0] font-light px-4 leading-relaxed">
+            <h2 className="text-lg sm:text-xl font-serif text-[#FAF7F0] font-light px-4 leading-relaxed">
               Estamos diseñando una nueva experiencia digital de vanguardia.
             </h2>
             <p className="text-xs text-[#8C8275] max-w-sm mx-auto leading-relaxed px-4">
@@ -501,8 +504,8 @@ export default function App() {
           </motion.div>
         </div>
 
-        {/* Footer copyright */}
-        <div className="absolute bottom-6 text-[10px] tracking-widest text-[#595248] uppercase relative z-10">
+        {/* Footer copyright - naturally positioned at the bottom, zero overlap */}
+        <div className="w-full text-center text-[10px] tracking-widest text-[#595248] uppercase relative z-10 mt-auto pt-6 shrink-0">
           © {new Date().getFullYear()} Bellini Odontología. Todos los derechos reservados.
         </div>
       </div>
